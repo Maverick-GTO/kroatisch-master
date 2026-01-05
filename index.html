@@ -7,10 +7,10 @@
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
-        /* NEUES KROATISCHES FARBSCHEMA */
         :root {
-            --cro-blue: #005EB8; /* Kroatisches Blau */
-            --cro-red: #E4002B;  /* Kroatisches Rot */
+            /* Dunkleres Blau für den Hintergrund */
+            --cro-blue: #02021a; 
+            --cro-red: #E4002B;
             --cro-white: #FFFFFF;
             --black: #000000;
         }
@@ -18,12 +18,14 @@
         body {
             margin: 0; padding: 20px; 
             background-color: var(--cro-blue);
-            /* Hintergrund mit roten und weissen Punkten (wie bei den Karten) */
+            /* Mehrschichtiges Muster für zufälligere Punktverteilung */
             background-image: 
-                radial-gradient(var(--cro-red) 15%, transparent 16%),
-                radial-gradient(var(--cro-white) 15%, transparent 16%);
-            background-size: 30px 30px; /* Grössere Punkte */
-            background-position: 0 0, 15px 15px; /* Versetztes Muster */
+                radial-gradient(var(--cro-red) 12%, transparent 13%),
+                radial-gradient(var(--cro-white) 12%, transparent 13%),
+                radial-gradient(var(--cro-red) 10%, transparent 11%),
+                radial-gradient(var(--cro-white) 10%, transparent 11%);
+            background-size: 70px 70px, 80px 80px, 110px 110px, 130px 130px;
+            background-position: 0 0, 35px 35px, 15px 50px, 60px 20px;
             font-family: 'Arial', sans-serif;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 100vh; color: var(--cro-white); overflow: hidden;
@@ -31,84 +33,71 @@
 
         h1 { 
             font-family: 'Bangers', cursive; font-size: 42px; 
-            color: var(--cro-white); /* Weisse Schrift */
-            -webkit-text-stroke: 2px var(--cro-red); /* Roter Rand */
-            text-shadow: 4px 4px 0 var(--black); margin-bottom: 15px; 
+            color: var(--cro-white);
+            -webkit-text-stroke: 2px var(--cro-red);
+            text-shadow: 4px 4px 0 var(--black); margin-bottom: 25px; 
         }
 
         .hidden { display: none !important; }
 
-        /* Buttons im neuen Stil (Weiss mit rotem Text) */
         .btn {
             background: var(--cro-white); color: var(--cro-red); 
-            border: 4px solid var(--black);
-            padding: 12px 10px; margin: 6px; font-family: 'Bangers', cursive;
-            font-size: 20px; cursor: pointer; border-radius: 0px; 
-            box-shadow: 5px 5px 0 var(--black); transition: 0.1s;
-            width: 90%; max-width: 280px; text-transform: uppercase;
+            border: 5px solid var(--black);
+            padding: 15px 10px; margin: 8px; font-family: 'Bangers', cursive;
+            font-size: 24px; cursor: pointer; border-radius: 0px; 
+            box-shadow: 6px 6px 0 var(--black); transition: 0.1s;
+            width: 90%; max-width: 300px; text-transform: uppercase;
         }
         .btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--black); }
 
-        /* Quiz Container */
         #quiz-card {
-            background: var(--cro-white); color: var(--black); padding: 25px;
-            border: 6px solid var(--black); width: 90%; max-width: 340px;
+            background: var(--cro-white); color: var(--black); padding: 30px;
+            border: 6px solid var(--black); width: 85%; max-width: 340px;
             box-shadow: 12px 12px 0 rgba(0,0,0,0.5); position: relative;
         }
-        #word-display { font-family: 'Bangers'; font-size: 38px; margin: 20px 0; color: var(--cro-blue); }
+        #word-display { font-family: 'Bangers'; font-size: 42px; margin: 25px 0; color: #005EB8; }
         
-        /* Antwort-Buttons */
-        .answer-btn { width: 100%; margin: 8px 0; background: #f0f0f0; font-family: 'Arial'; font-weight: bold; border-radius: 0; border: 3px solid var(--black); box-shadow: 4px 4px 0 var(--black); color: var(--black); }
+        .answer-btn { width: 100%; margin: 10px 0; background: #f9f9f9; border: 3px solid var(--black); box-shadow: 4px 4px 0 var(--black); color: var(--black); font-size: 20px; }
         .correct { background-color: #39FF14 !important; color: black !important; }
         .wrong { background-color: var(--cro-red) !important; color: white !important; }
 
-        /* Stats */
-        #stats-screen h2 { font-family: 'Bangers'; font-size: 50px; color: var(--cro-white); -webkit-text-stroke: 2px var(--cro-red); }
-        .score-box { font-size: 70px; font-family: 'Bangers'; color: var(--cro-white); text-shadow: 5px 5px 0 var(--black); -webkit-text-stroke: 2px var(--cro-blue); }
-
-        /* NEUES RASTER: 3 SPALTEN, KEIN SCROLLEN */
         #nomen-grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
-            gap: 10px; 
-            width: 100%; max-width: 360px; 
-            /* Kein Scrollen mehr */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 12px; 
+            width: 100%; max-width: 380px; 
             padding: 5px;
         }
-        /* Kleinere Buttons für das Raster */
-        #nomen-grid .btn {
-            font-size: 14px;
-            padding: 10px 5px;
-            width: 100%; /* Füllt die Spalte aus */
-            margin: 0; /* Kein Margin im Grid */
-        }
+        #nomen-grid .btn { font-size: 14px; padding: 12px 5px; width: 100%; margin: 0; box-shadow: 4px 4px 0 var(--black); }
+
+        .score-box { font-size: 75px; font-family: 'Bangers'; color: var(--cro-white); text-shadow: 5px 5px 0 var(--black); -webkit-text-stroke: 2px #005EB8; }
     </style>
 </head>
 <body>
 
     <div id="start-screen">
         <h1>KROATISCH MASTER</h1>
-        <button class="btn" onclick="showNomen()">NOMEN (720)</button>
-        <button class="btn" onclick="startQuiz('verben')">VERBEN (72)</button>
-        <button class="btn" onclick="startQuiz('adjektive')">ADJEKTIVE (72)</button>
+        <button class="btn" onclick="showNomen()">NOMEN</button>
+        <button class="btn" onclick="startQuiz('verben')">VERBEN</button>
+        <button class="btn" onclick="startQuiz('adjektive')">ADJEKTIVE</button>
     </div>
 
     <div id="nomen-screen" class="hidden">
         <h1 style="font-size: 32px;">THEMA WÄHLEN</h1>
         <div id="nomen-grid"></div>
-        <button class="btn" style="background: var(--cro-blue); color: var(--cro-white); margin-top:20px;" onclick="goHome()">ZURÜCK</button>
+        <button class="btn" style="background: #005EB8; color: var(--cro-white); margin-top:25px;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <div id="quiz-card" class="hidden">
-        <div id="prog" style="font-weight:bold;">1 / 10</div>
+        <div id="prog" style="font-weight:bold; font-size: 18px;">1 / 10</div>
         <div id="word-display">DEUTSCH</div>
         <div id="options"></div>
     </div>
 
     <div id="stats-screen" class="hidden">
         <div class="score-box" id="final-score">0 / 10</div>
-        <h2 id="feedback">GENIE!</h2>
-        <button class="btn" style="background: var(--cro-blue); color: var(--cro-white);" onclick="goHome()">ZURÜCK</button>
+        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 40px; -webkit-text-stroke: 1px var(--cro-red);">GENIE!</h2>
+        <button class="btn" style="background: #005EB8; color: var(--cro-white);" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <script>
@@ -306,7 +295,6 @@
         function showNomen() {
             const grid = document.getElementById('nomen-grid'); grid.innerHTML = '';
             Object.keys(db.nomen).forEach(cat => {
-                // Buttons für das Grid werden hier erstellt
                 const b = document.createElement('button'); b.className = 'btn'; 
                 b.innerText = cat.toUpperCase(); b.onclick = () => startQuiz('nomen', cat);
                 grid.appendChild(b);
@@ -357,7 +345,6 @@
             document.getElementById('final-score').innerText = `${score} / 10`;
             document.getElementById('feedback').innerText = feedbacks[score];
         }
-
         window.onload = goHome;
     </script>
 </body>
