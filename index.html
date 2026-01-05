@@ -98,7 +98,7 @@
     
     <script>
         // Datenbank (Deine Wörter)
-      const db = {
+    const db = {
             nomen: {
                 tiere: [
                     {d:"Hund", k:"Pas", a:["Mačka","Konj","Ptica"]}, {d:"Katze", k:"Mačka", a:["Pas","Zec","Miš"]},
@@ -207,7 +207,7 @@
                     {d:"Mannschaft", k:"Tim", a:["Igrač","Trener","Sudac"]}, {d:"Sieg", k:"Pobjeda", a:["Poraz","Igra","Gol"]},
                     {d:"Training", k:"Trening", a:["Odmor","Igra","Škola"]}, {d:"Tor", k:"Gol", a:["Lopta","Mreža","Tim"]},
                     {d:"Tennis", k:"Tenis", a:["Rukomet","Odbojka","Košarka"]}, {d:"Basketball", k:"Košarka", a:["Nogomet","Tenis","Skijanje"]},
-                    {d:"Ski", k:"Skije", a:["Sanke","Bicikl","Lopta"]}, {d:"Eis", k:"Led", a:["Snijeg","Voda","Vjetar"]},
+                    {d:"Ski", k:"Skije", a:["Sanke","Bicikl","Lopta"]}, {d:"Led", k:"Led", a:["Snijeg","Voda","Vjetar"]},
                     {d:"Halle", k:"Dvorana", a:["Stadion","Teren","Park"]}, {d:"Stadion", k:"Stadion", a:["Dvorana","Igralište","Park"]},
                     {d:"Schiedsrichter", k:"Sudac", a:["Trener","Igrač","Kapetan"]}, {d:"Trainer", k:"Trener", a:["Sudac","Igrač","Doktor"]},
                     {d:"Medaille", k:"Medalja", a:["Pehar","Zastava","Pobjeda"]}, {d:"Pokal", k:"Pehar", a:["Medalja","Zastava","Pobjeda"]}
@@ -369,8 +369,7 @@
                     {d:"Chor", k:"Zbor", a:["Orkestar","Bend","Grupa"]}, {d:"Bühne", k:"Pozornica", a:["Dvorana","Sjedalo","Zastor"]},
                     {d:"Lautstärke", k:"Glasnoća", a:["Zvuk","Tišina","Ton"]}, {d:"Komponist", k:"Skladatelj", a:["Pjevač","Svirka","Pisac"]}
                 ]
-            }
-        },
+            },
             verben: [
                 {d:"sein", k:"biti", a:["imati","raditi","htjeti"]}, {d:"haben", k:"imati", a:["biti","dobiti","dati"]},
                 {d:"machen", k:"raditi", a:["stvoriti","popraviti","ići"]}, {d:"gehen", k:"ići", a:["doći","trčati","hodati"]},
@@ -411,7 +410,7 @@
             ],
             adjektive: [
                 {d:"gross", k:"velik", a:["mali","tanak","dug"]}, {d:"klein", k:"mali", a:["velik","visok","širok"]},
-                {d:"gut", k:"dobar", a:["loš","zao","lijep"]}, {d:"schlecht", k:"loš", a:["dobar","ružan","kriv"]},
+                {d:"gut", k:"dobar", a:["loš","zao","lijep"]}, {d:"schlecht", k:"loš", a:["dobar","brz","spor"]},
                 {d:"neu", k:"nov", a:["star","mlad","svjež"]}, {d:"alt", k:"star", a:["nov","mlad","drevni"]},
                 {d:"jung", k:"mlad", a:["star","nov","dijete"]}, {d:"schön", k:"lijep", a:["ružan","dobar","divan"]},
                 {d:"hässlich", k:"ružan", a:["lijep","loš","gadan"]}, {d:"heiss", k:"vruć", a:["hladan","topao","mlak"]},
@@ -448,7 +447,7 @@
             ]
         };
 
-     const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+        const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
         let pool = [], qIdx = 0, score = 0;
 
         function goHome() { 
