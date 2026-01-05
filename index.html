@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kroatisch Master</title>
+    
     <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,55 +21,53 @@
 
         body {
             margin: 0; padding: 10px; background-color: var(--black);
-            /* Winzige Punkte, zufällige Farbverteilung durch Ebenen-Versatz */
+            /* Winzige rote und weisse Punkte (Pop-Art Stil) */
             background-image: 
-                radial-gradient(var(--cro-red) 1px, transparent 1px),
-                radial-gradient(var(--cro-white) 1px, transparent 1px),
-                radial-gradient(var(--cro-red) 1px, transparent 1px),
-                radial-gradient(var(--cro-white) 1px, transparent 1px);
-            background-size: 30px 30px, 45px 45px, 60px 60px, 75px 75px;
-            background-position: 0 0, 15px 15px, 10px 40px, 50px 20px;
+                radial-gradient(var(--cro-white) 1px, transparent 0),
+                radial-gradient(var(--cro-red) 1px, transparent 0);
+            background-size: 25px 25px, 35px 35px;
+            background-position: 0 0, 15px 15px;
             font-family: 'Arial', sans-serif;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 100vh; color: var(--cro-white); overflow: hidden;
         }
 
         h1 { 
-            font-family: 'Bangers', cursive; font-size: 55px; /* Riesig */
+            font-family: 'Bangers', cursive; font-size: 55px; 
             color: var(--cro-white); -webkit-text-stroke: 2px var(--cro-red);
             text-shadow: 6px 6px 0 var(--black); margin: 10px 0; text-align: center;
         }
 
         .hidden { display: none !important; }
 
-        /* Buttons Startbildschirm */
+        /* Grosse Menü-Buttons */
         .btn {
             background: var(--cro-white); color: var(--cro-red); border: 6px solid var(--black);
             padding: 25px 15px; margin: 12px; font-family: 'Bangers', cursive;
-            font-size: 32px; /* Riesig */ cursor: pointer; border-radius: 0px; 
-            box-shadow: 10px 10px 0 var(--black); width: 95%; max-width: 350px; text-transform: uppercase;
+            font-size: 35px; cursor: pointer; border-radius: 0px; 
+            box-shadow: 10px 10px 0 var(--black); width: 95%; max-width: 380px; text-transform: uppercase;
         }
         .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--black); }
 
-        /* Quiz Card */
+        /* Quiz Karte */
         #quiz-card {
             background: var(--cro-white); color: var(--black); padding: 35px;
-            border: 8px solid var(--black); width: 90%; max-width: 400px;
+            border: 8px solid var(--black); width: 90%; max-width: 420px;
             box-shadow: 15px 15px 0 rgba(255,255,255,0.1); text-align: center;
         }
-        #word-display { font-family: 'Bangers'; font-size: 60px; margin: 20px 0; color: var(--cro-blue); }
-        .answer-btn { width: 100%; margin: 15px 0; padding: 22px; font-size: 26px; background: #eee; border: 5px solid var(--black); box-shadow: 6px 6px 0 var(--black); font-weight: bold; }
+        #word-display { font-family: 'Bangers'; font-size: 65px; margin: 20px 0; color: var(--cro-blue); }
+        .answer-btn { width: 100%; margin: 15px 0; padding: 25px; font-size: 30px; background: #eee; border: 5px solid var(--black); box-shadow: 6px 6px 0 var(--black); font-weight: bold; }
         .correct { background-color: #39FF14 !important; }
         .wrong { background-color: var(--cro-red) !important; color: white !important; }
 
-        /* Nomen-Raster: 3 Spalten */
+        /* Nomen-Raster: 3 Spalten, KEINE Zahlen */
         #nomen-grid { 
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; 
-            width: 100%; max-width: 450px; padding: 5px;
+            width: 100%; max-width: 480px; padding: 5px;
         }
-        #nomen-grid .btn { font-size: 18px; padding: 18px 2px; width: 100%; margin: 0; box-shadow: 5px 5px 0 var(--black); border: 4px solid var(--black); }
+        #nomen-grid .btn { font-size: 18px; padding: 20px 2px; width: 100%; margin: 0; box-shadow: 5px 5px 0 var(--black); border: 4px solid var(--black); }
 
-        .score-box { font-size: 100px; font-family: 'Bangers'; text-shadow: 8px 8px 0 var(--black); }
+        .score-box { font-size: 110px; font-family: 'Bangers'; text-shadow: 8px 8px 0 var(--black); }
     </style>
 </head>
 <body>
@@ -79,21 +82,21 @@
     <div id="nomen-screen" class="hidden">
         <h1 style="font-size: 40px;">THEMA</h1>
         <div id="nomen-grid"></div>
-        <button class="btn" style="background: var(--cro-blue); color: #fff; margin-top:30px; font-size: 24px;" onclick="goHome()">ZURÜCK</button>
+        <button class="btn" style="background: var(--cro-blue); color: #fff; margin-top:30px; font-size: 26px;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <div id="quiz-card" class="hidden">
-        <div id="prog" style="font-weight:bold; font-size: 24px;">1 / 10</div>
+        <div id="prog" style="font-weight:bold; font-size: 26px;">1 / 10</div>
         <div id="word-display">WORT</div>
         <div id="options"></div>
     </div>
 
     <div id="stats-screen" class="hidden">
         <div class="score-box" id="final-score">0 / 10</div>
-        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 50px; -webkit-text-stroke: 1.5px var(--cro-red);">GENIE!</h2>
+        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 55px; -webkit-text-stroke: 1.5px var(--cro-red);">GENIE!</h2>
         <button class="btn" style="background: var(--cro-blue); color: #fff;" onclick="goHome()">ZURÜCK</button>
-    </div></div>
-
+    </div>
+    
     <script>
         // Datenbank (Deine Wörter)
        const db = {
@@ -278,7 +281,7 @@
             ]
         };
 
-       const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+      const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
         let pool = [], qIdx = 0, score = 0;
 
         function goHome() { 
@@ -332,6 +335,7 @@
             document.getElementById('final-score').innerText = `${score} / 10`;
             document.getElementById('feedback').innerText = feedbacks[score];
         }
+        window.onload = goHome;
     </script>
 </body>
 </html>
