@@ -11,6 +11,7 @@
 
         body {
             margin: 0; padding: 10px; background-color: var(--black);
+            /* Hintergrund mit Punkten */
             background-image: 
                 radial-gradient(var(--cro-red) 0.6px, transparent 0.6px),
                 radial-gradient(var(--white) 0.6px, transparent 0.6px);
@@ -27,21 +28,48 @@
 
         h1 { 
             font-family: 'Bangers'; font-size: 58px; color: var(--white); 
-            -webkit-text-stroke: 2px var(--cro-red); text-shadow: 6px 6px 0 var(--black); 
-            margin-bottom: 30px; text-align: center; 
+            /* ÄNDERUNG 1: Stroke auf 1px reduziert für dünnere Anmutung */
+            -webkit-text-stroke: 1px var(--cro-red); 
+            text-shadow: 4px 4px 0 var(--black); /* Schatten auch leicht angepasst */
+            margin-bottom: 30px; text-align: center; letter-spacing: 2px;
         }
         .hidden { display: none !important; }
 
         .btn {
             background: var(--white); color: var(--cro-red); border: 6px solid var(--black);
             padding: 25px 10px; margin: 15px 0; font-family: 'Bangers'; font-size: 38px;
+            /* ÄNDERUNG 1: Explizit normale Dicke */
+            font-weight: 400; 
             cursor: pointer; box-shadow: 10px 10px 0 var(--black); 
             width: 90%; max-width: 380px; text-transform: uppercase;
         }
         .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--black); }
 
-        #quiz-card { background: var(--white); color: var(--black); padding: 40px; border: 8px solid var(--black); width: 90%; max-width: 420px; text-align: center; }
-        #word-display { font-family: 'Bangers'; font-size: 75px; margin: 20px 0; color: var(--cro-blue); }
+        /* ÄNDERUNG 2 & 3: Neuer Schachbrett-Rand für die Quiz-Karte */
+        #quiz-card { 
+            color: var(--black); 
+            padding: 40px; 
+            width: 90%; max-width: 420px; text-align: center;
+            
+            /* 1. Platz für den Rand schaffen */
+            border: 8px solid transparent; 
+            
+            /* 2. Den Hintergrund definieren:
+               - Zuerst eine weisse Fläche nur für den inneren Bereich (padding-box)
+               - Danach das Schachbrettmuster für den Randbereich (border-box) mit conic-gradient */
+            background: 
+                linear-gradient(var(--white), var(--white)) padding-box,
+                conic-gradient(var(--cro-red) 0.25turn, var(--white) 0.25turn 0.5turn, var(--cro-red) 0.5turn 0.75turn, var(--white) 0.75turn) border-box;
+            
+            /* 3. Grösse des Musters festlegen (doppelte Randbreite = 16px für 8px Quadrate) */
+            background-size: 100% 100%, 16px 16px;
+            
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Ein leichter Schatten für Tiefe */
+        }
+
+        /* ÄNDERUNG 1: Explizit normale Dicke für das Abfragewort */
+        #word-display { font-family: 'Bangers'; font-weight: 400; font-size: 75px; margin: 20px 0; color: var(--cro-blue); }
+        
         .answer-btn { width: 100%; margin: 15px 0; padding: 25px; font-size: 32px; background: #eee; border: 5px solid var(--black); box-shadow: 6px 6px 0 var(--black); font-weight: bold; }
         .correct { background-color: #39FF14 !important; }
         .wrong { background-color: var(--cro-red) !important; color: white !important; }
@@ -50,6 +78,9 @@
         #nomen-grid .btn { font-size: 20px; padding: 22px 2px; width: 100%; margin: 0; box-shadow: 5px 5px 0 var(--black); border: 4px solid var(--black); }
 
         .score-box { font-size: 120px; font-family: 'Bangers'; text-shadow: 8px 8px 0 var(--black); }
+        
+        /* ÄNDERUNG 1: Stroke auf 1px reduziert beim Feedback */
+        #feedback { font-family: 'Bangers'; font-size: 55px; -webkit-text-stroke: 1px var(--cro-red); color: var(--white); text-shadow: 3px 3px 0 var(--black); }
     </style>
 </head>
 <body>
@@ -62,9 +93,9 @@
     </div>
 
     <div id="nomen-screen" class="hidden">
-        <h1 style="font-size: 40px;">THEMA</h1>
+        <h1 style="font-size: 40px;">THEMA WÄHLEN</h1>
         <div id="nomen-grid"></div>
-        <button class="btn" style="background: var(--cro-blue); color: #fff; margin-top:30px; font-size: 26px;" onclick="goHome()">ZURÜCK</button>
+        <button class="btn" style="background: var(--cro-blue); color: #fff; margin-top:30px; font-size: 26px; -webkit-text-stroke: 0px;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <div id="quiz-card" class="hidden">
@@ -75,8 +106,8 @@
 
     <div id="stats-screen" class="hidden">
         <div class="score-box" id="final-score">0 / 10</div>
-        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 55px; -webkit-text-stroke: 1.5px var(--cro-red);">GENIE!</h2>
-        <button class="btn" style="background: var(--cro-blue); color: #fff;" onclick="goHome()">ZURÜCK</button>
+        <h2 id="feedback">GENIE!</h2>
+        <button class="btn" style="background: var(--cro-blue); color: #fff; -webkit-text-stroke: 0px;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <script>
@@ -431,7 +462,7 @@
             ]
         };
 
-        const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+       const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
         let pool = [], qIdx = 0, score = 0;
 
         function goHome() { 
