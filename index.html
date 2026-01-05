@@ -98,7 +98,7 @@
     
     <script>
         // Datenbank (Deine Wörter)
-       const db = {
+      const db = {
             nomen: {
                 tiere: [
                     {d:"Hund", k:"Pas", a:["Mačka","Konj","Ptica"]}, {d:"Katze", k:"Mačka", a:["Pas","Zec","Miš"]},
@@ -112,97 +112,265 @@
                     {d:"Hase", k:"Zec", a:["Miš","Jež","Vjeverica"]}, {d:"Spinne", k:"Pauk", a:["Muha","Mrav","Pčela"]},
                     {d:"Biene", k:"Pčela", a:["Osa","Muha","Leptir"]}, {d:"Schmetterling", k:"Leptir", a:["Pčela","Cvijet","Ptica"]},
                     {d:"Affe", k:"Majmun", a:["Lav","Slon","Mrav"]}, {d:"Schildkröte", k:"Kornjača", a:["Zmija","Puž","Riba"]},
-                    {d:"Esel", k:"Magarac", a:["Konj","Krava","Ovca"]}, {d:"Schaf", k:"Ovca", a:["Koza","Krava","Konj"]}
+                    {d:"Esel", k:"Magarac", a:["Konj","Krava","Ovca"]}, {d:"Schaf", k:"Ovca", a:["Koza","Krava","Konj"]},
+                    {d:"Giraffe", k:"Žirafa", a:["Slon","Lav","Zebra"]}, {d:"Zebra", k:"Zebra", a:["Konj","Žirafa","Lav"]},
+                    {d:"Krokodil", k:"Krokodil", a:["Zmija","Gušter","Riba"]}, {d:"Frosch", k:"Žaba", a:["Zmija","Puž","Riba"]},
+                    {d:"Tiger", k:"Tigar", a:["Lav","Vuk","Pas"]}, {d:"Adler", k:"Orao", a:["Ptica","Sokol","Gavran"]},
+                    {d:"Eule", k:"Sova", a:["Orao","Vrabac","Ptica"]}, {d:"Schwan", k:"Labud", a:["Patka","Guska","Ptica"]},
+                    {d:"Gans", k:"Guska", a:["Patka","Labud","Kokoš"]}, {d:"Ziege", k:"Koza", a:["Ovca","Krava","Konj"]},
+                    {d:"Hirsch", k:"Jelen", a:["Medvjed","Vuk","Zec"]}, {d:"Igel", k:"Jež", a:["Miš","Zec","Pauk"]},
+                    {d:"Eichhörnchen", k:"Vjeverica", a:["Miš","Zec","Mačka"]}, {d:"Ratte", k:"Štakor", a:["Miš","Zec","Pauk"]},
+                    {d:"Delfin", k:"Delfin", a:["Riba","Kit","Morski pas"]}, {d:"Hai", k:"Morski pas", a:["Kit","Delfin","Riba"]}
                 ],
                 essen: [
                     {d:"Apfel", k:"Jabuka", a:["Kruška","Banana","Limun"]}, {d:"Brot", k:"Kruh", a:["Sir","Mlijeko","Jaje"]},
                     {d:"Ei", k:"Jaje", a:["Meso","Riba","Sol"]}, {d:"Käse", k:"Sir", a:["Maslac","Šunka","Kruh"]},
                     {d:"Suppe", k:"Juha", a:["Salata","Riža","Tjestenina"]}, {d:"Fleisch", k:"Meso", a:["Riba","Povrće","Voće"]},
                     {d:"Milch", k:"Mlijeko", a:["Voda","Sok","Čaj"]}, {d:"Zucker", k:"Šećer", a:["Sol","Papar","Ulje"]},
-                    {d:"Salz", k:"Sol", a:["Šećer","Papar","Brašno"]}, {d:"Kartoffel", k:"Krumpir", a:["Rajčica","Luk","Kuhanje"]},
-                    {d:"Nudeln", k:"Tjestenina", a:["Riža","Kruh","Pizza"]}, {d:"Reis", k:"Riža", a:["Kruh","Tjestenina","Grah"]},
-                    {d:"Tomate", k:"Rajčica", a:["Paprika","Salata","Krumpir"]}, {d:"Gurke", k:"Krastavac", a:["Luk","Salata","Kupus"]},
-                    {d:"Banane", k:"Banana", a:["Jabuka","Jagoda","Naranča"]}, {d:"Pizza", k:"Pizza", a:["Kruh","Juha","Salata"]}
+                    {d:"Salz", k:"Sol", a:["Šećer","Papar","Brašno"]}, {d:"Kartoffel", k:"Krumpir", a:["Rajčica","Luk","Grah"]},
+                    {d:"Banane", k:"Banana", a:["Jabuka","Jagoda","Limun"]}, {d:"Birne", k:"Kruška", a:["Jabuka","Šljiva","Trešnja"]},
+                    {d:"Zitrone", k:"Limun", a:["Naranča","Jabuka","Banana"]}, {d:"Orange", k:"Naranča", a:["Limun","Mandarina","Jabuka"]},
+                    {d:"Erdbeere", k:"Jagoda", a:["Malina","Kupina","Trešnja"]}, {d:"Kirsche", k:"Trešnja", a:["Višnja","Jagoda","Šljiva"]},
+                    {d:"Tomate", k:"Rajčica", a:["Paprika","Krastavac","Krumpir"]}, {d:"Gurke", k:"Krastavac", a:["Rajčica","Luk","Salata"]},
+                    {d:"Paprika", k:"Paprika", a:["Rajčica","Krastavac","Patlidžan"]}, {d:"Zwiebel", k:"Luk", a:["Češnjak","Krumpir","Mrkva"]},
+                    {d:"Knoblauch", k:"Češnjak", a:["Luk","Papar","Sol"]}, {d:"Reis", k:"Riža", a:["Tjestenina","Grah","Kruh"]},
+                    {d:"Nudeln", k:"Tjestenina", a:["Riža","Kruh","Kolač"]}, {d:"Salat", k:"Salata", a:["Juha","Meso","Povrće"]},
+                    {d:"Fisch", k:"Riba", a:["Meso","Piletina","Rak"]}, {d:"Hähnchen", k:"Piletina", a:["Svinjetina","Govedina","Riba"]},
+                    {d:"Schinken", k:"Šunka", a:["Sir","Slanina","Kruh"]}, {d:"Wurst", k:"Kobasica", a:["Šunka","Salama","Meso"]},
+                    {d:"Pizza", k:"Pizza", a:["Kruh","Tjestenina","Riža"]}, {d:"Butter", k:"Maslac", a:["Sir","Mlijeko","Jaje"]},
+                    {d:"Honig", k:"Med", a:["Šećer","Džem","Maslac"]}, {d:"Kuchen", k:"Kolač", a:["Torta","Keks","Čokolada"]},
+                    {d:"Eis", k:"Sladoled", a:["Kolač","Keks","Voće"]}, {d:"Schokolade", k:"Čokolada", a:["Bombon","Keks","Kolač"]},
+                    {d:"Nuss", k:"Orah", a:["Lješnjak","Badem","Keks"]}, {d:"Pfirsich", k:"Breskva", a:["Marelica","Kruška","Jabuka"]},
+                    {d:"Melone", k:"Lubenica", a:["Dinja","Bundeva","Jabuka"]}, {d:"Spinat", k:"Špinat", a:["Blitva","Kupus","Salata"]},
+                    {d:"Mais", k:"Kukuruz", a:["Pšenica","Riža","Grah"]}, {d:"Bohne", k:"Grah", a:["Grašak","Leća","Riža"]}
                 ],
                 trinken: [
                     {d:"Wasser", k:"Voda", a:["Sok","Vino","Pivo"]}, {d:"Saft", k:"Sok", a:["Voda","Mlijeko","Čaj"]},
                     {d:"Kaffee", k:"Kava", a:["Čaj","Mlijeko","Voda"]}, {d:"Tee", k:"Čaj", a:["Kava","Sok","Vino"]},
                     {d:"Bier", k:"Pivo", a:["Vino","Voda","Sok"]}, {d:"Wein", k:"Vino", a:["Pivo","Sok","Voda"]},
-                    {d:"Limonade", k:"Limunada", a:["Sok","Voda","Mlijeko"]}, {d:"Milch", k:"Mlijeko", a:["Voda","Sok","Kava"]}
+                    {d:"Limonade", k:"Limunada", a:["Sok","Voda","Mlijeko"]}, {d:"Kakao", k:"Kakao", a:["Čaj","Kava","Sok"]},
+                    {d:"Eistee", k:"Ledeni čaj", a:["Sok","Voda","Vino"]}, {d:"Mineralwasser", k:"Mineralna voda", a:["Voda","Sok","Pivo"]},
+                    {d:"Champagner", k:"Šampanjac", a:["Vino","Pivo","Sok"]}, {d:"Milchshake", k:"Frape", a:["Sok","Mlijeko","Voda"]},
+                    {d:"Likör", k:"Likre", a:["Rakija","Vino","Pivo"]}, {d:"Schnaps", k:"Rakija", a:["Vino","Pivo","Likre"]},
+                    {d:"Sirup", k:"Sirup", a:["Sok","Med","Voda"]}, {d:"Jogurt", k:"Jogurt", a:["Mlijeko","Sir","Vrhnje"]},
+                    {d:"Kefir", k:"Kefir", a:["Mlijeko","Jogurt","Voda"]}, {d:"Tonic", k:"Tonik", a:["Voda","Sok","Soda"]},
+                    {d:"Soda", k:"Soda", a:["Voda","Sok","Tonik"]}, {d:"Essenzen", k:"Esencije", a:["Sok","Voda","Aroma"]}
                 ],
                 wohnen: [
                     {d:"Haus", k:"Kuća", a:["Stan","Zgrada","Soba"]}, {d:"Wohnung", k:"Stan", a:["Kuća","Soba","Vrata"]},
                     {d:"Zimmer", k:"Soba", a:["Kuhinja","Hodnik","Kupaonica"]}, {d:"Tisch", k:"Stol", a:["Stolica","Krevet","Ormar"]},
                     {d:"Stuhl", k:"Stolica", a:["Stol","Kauč","Krevet"]}, {d:"Bett", k:"Krevet", a:["Ormar","Stol","Lampa"]},
-                    {d:"Fenster", k:"Prozor", a:["Vrata","Zid","Pod"]}, {d:"Tür", k:"Vrata", a:["Prozor","Ključ","Zid"]},
-                    {d:"Küche", k:"Kuhinja", a:["Soba","Vrt","Garaža"]}, {d:"Bad", k:"Kupaonica", a:["WC","Kuhinja","Soba"]}
+                    {d:"Schrank", k:"Ormar", a:["Stol","Krevet","Polica"]}, {d:"Fenster", k:"Prozor", a:["Vrata","Zid","Pod"]},
+                    {d:"Tür", k:"Vrata", a:["Prozor","Ključ","Zid"]}, {d:"Küche", k:"Kuhinja", a:["Soba","Vrt","Garaža"]},
+                    {d:"Bad", k:"Kupaonica", a:["WC","Kuhinja","Soba"]}, {d:"Wand", k:"Zid", a:["Pod","Strop","Prozor"]},
+                    {d:"Boden", k:"Pod", a:["Strop","Zid","Tepih"]}, {d:"Dach", k:"Krov", a:["Zid","Pod","Dimnjak"]},
+                    {d:"Garten", k:"Vrt", a:["Dvorište","Park","Šuma"]}, {d:"Treppe", k:"Stepenice", a:["Dizalo","Hodnik","Vrata"]},
+                    {d:"Balkon", k:"Balkon", a:["Terasa","Prozor","Vrt"]}, {d:"Keller", k:"Podrum", a:["Tavan","Garaža","Soba"]},
+                    {d:"Tavan", k:"Tavan", a:["Podrum","Soba","Kuhinja"]}, {d:"Garaža", k:"Garaža", a:["Dvorište","Vrt","Podrum"]},
+                    {d:"Spiegel", k:"Ogledalo", a:["Slika","Prozor","Zid"]}, {d:"Teppich", k:"Tepih", a:["Pod","Zavjesa","Jastuk"]},
+                    {d:"Lampe", k:"Lampa", a:["Svjetlo","Stol","Strop"]}, {d:"Bild", k:"Slika", a:["Ogledalo","Zid","Okvir"]},
+                    {d:"Sofa", k:"Kauč", a:["Stolica", "Fotelja", "Krevet"]}, {d:"Sessel", k:"Fotelja", a:["Stolica", "Kauč", "Stol"]},
+                    {d:"Regal", k:"Polica", a:["Ormar", "Stol", "Zid"]}, {d:"Vorhang", k:"Zavjesa", a:["Prozor", "Tepih", "Zid"]},
+                    {d:"Jastuk", k:"Jastuk", a:["Deka", "Krevet", "Tepih"]}, {d:"Deka", k:"Deka", a:["Jastuk", "Plahta", "Ručnik"]}
                 ],
                 schule: [
                     {d:"Buch", k:"Knjiga", a:["Bilježnica","Olovka","Torba"]}, {d:"Heft", k:"Bilježnica", a:["Knjiga","Papir","Gumica"]},
                     {d:"Stift", k:"Olovka", a:["Gumica","Lenjir","Papir"]}, {d:"Lehrer", k:"Učitelj", a:["Učenik","Škola","Knjiga"]},
-                    {d:"Schule", k:"Škola", a:["Učionica","Razred","Torba"]}, {d:"Pause", k:"Odmor", a:["Sat","Igra","Škola"]}
+                    {d:"Schüler", k:"Učenik", a:["Učitelj","Ravnatelj","Dijete"]}, {d:"Schule", k:"Škola", a:["Učionica","Razred","Torba"]},
+                    {d:"Klasse", k:"Razred", a:["Škola","Knjiga","Učenik"]}, {d:"Tafel", k:"Ploča", a:["Kreda","Zid","Slika"]},
+                    {d:"Kreide", k:"Kreda", a:["Ploča","Olovka","Gumica"]}, {d:"Rucksack", k:"Ruksak", a:["Torba","Knjiga","Jakna"]},
+                    {d:"Radiergummi", k:"Gumica", a:["Olovka","Papir","Lenjir"]}, {d:"Lineal", k:"Lenjir", a:["Olovka","Gumica","Knjiga"]},
+                    {d:"Spitzer", k:"Šiljilo", a:["Olovka","Gumica","Lenjir"]}, {d:"Papier", k:"Papir", a:["Knjiga","Bilježnica","Olovka"]},
+                    {d:"Schere", k:"Škare", a:["Ljepilo","Papir","Olovka"]}, {d:"Kleber", k:"Ljepilo", a:["Škare","Papir","Olovka"]},
+                    {d:"Schreibtisch", k:"Pisaći stol", a:["Stolica","Ormar","Polica"]}, {d:"Pause", k:"Odmor", a:["Sat","Škola","Igra"]},
+                    {d:"Hausaufgabe", k:"Domaća zadaća", a:["Ispit","Učenje","Škola"]}, {d:"Prüfung", k:"Ispit", a:["Zadaća","Učenje","Ocjena"]},
+                    {d:"Note", k:"Ocjena", a:["Ispit","Zadaća","Škola"]}, {d:"Ferien", k:"Praznici", a:["Odmor","Škola","Učenje"]},
+                    {d:"Sportstunde", k:"Tjelesni", a:["Matematika","Povijest","Jezik"]}, {d:"Mathe", k:"Matematika", a:["Fizika","Kemija","Biologija"]},
+                    {d:"Sprache", k:"Jezik", a:["Povijest","Zemljopis","Glazba"]}
                 ],
                 technik: [
                     {d:"Handy", k:"Mobitel", a:["Radio","Kompjuter","TV"]}, {d:"Computer", k:"Kompjuter", a:["Laptop","Tablet","Ekran"]},
-                    {d:"Fernseher", k:"Televizor", a:["Radio","Kino","Slika"]}, {d:"Uhr", k:"Sat", a:["Vrijeme","Ruka","Zid"]}
+                    {d:"Fernseher", k:"Televizor", a:["Radio","Kino","Slika"]}, {d:"Uhr", k:"Sat", a:["Vrijeme","Ruka","Zid"]},
+                    {d:"Kamera", k:"Kamera", a:["Slika","Video","Film"]}, {d:"Internet", k:"Internet", a:["Kabel","Mreža","Wifi"]},
+                    {d:"Strom", k:"Struja", a:["Voda","Vatra","Zrak"]}, {d:"Batterie", k:"Baterija", a:["Struja","Lampa","Auto"]},
+                    {d:"Laptop", k:"Laptop", a:["Mobitel","Tablet","Miš"]}, {d:"Tablet", k:"Tablet", a:["Laptop","Mobitel","TV"]},
+                    {d:"Tastatur", k:"Tipkovnica", a:["Miš","Ekran","Printer"]}, {d:"Maus", k:"Miš", a:["Tipkovnica","Ekran","Kabel"]},
+                    {d:"Bildschirm", k:"Ekran", a:["Monitor","Televizor","Staklo"]}, {d:"Drucker", k:"Printer", a:["Skener","Papir","Kompjuter"]},
+                    {d:"Kopfhörer", k:"Slušalice", a:["Mikrofon","Zvučnik","Radio"]}, {d:"Lautsprecher", k:"Zvučnik", a:["Slušalice","Mikrofon","Radio"]},
+                    {d:"Mikrofon", k:"Mikrofon", a:["Slušalice","Zvučnik","Kamera"]}, {d:"Kabel", k:"Kabel", a:["Žica","Utikač","Struja"]},
+                    {d:"Steckdose", k:"Utičnica", a:["Prekidač","Struja","Lampa"]}, {d:"Schalter", k:"Prekidač", a:["Utičnica","Svjetlo","Vrata"]}
                 ],
                 sport: [
-                    {d:"Ball", k:"Lopta", a:["Igra","Nogomet","Tenis"]}, {d:"Spiel", k:"Igra", a:["Sport","Zabava","Tim"]},
-                    {d:"Fussball", k:"Nogomet", a:["Lopta","Igralište","Gol"]}, {d:"Fahrrad", k:"Bicikl", a:["Auto","Motor","Kotač"]}
+                    {d:"Ball", k:"Lopta", a:["Igra","Kolo","Trka"]}, {d:"Spiel", k:"Igra", a:["Sport","Zabava","Tim"]},
+                    {d:"Fussball", k:"Nogomet", a:["Lopta","Igralište","Gol"]}, {d:"Fahrrad", k:"Bicikl", a:["Auto","Motor","Kotač"]},
+                    {d:"Laufen", k:"Trčanje", a:["Hodanje","Skakanje","Plivanje"]}, {d:"Schwimmen", k:"Plivanje", a:["More","Bazen","Trčanje"]},
+                    {d:"Mannschaft", k:"Tim", a:["Igrač","Trener","Sudac"]}, {d:"Sieg", k:"Pobjeda", a:["Poraz","Igra","Gol"]},
+                    {d:"Training", k:"Trening", a:["Odmor","Igra","Škola"]}, {d:"Tor", k:"Gol", a:["Lopta","Mreža","Tim"]},
+                    {d:"Tennis", k:"Tenis", a:["Rukomet","Odbojka","Košarka"]}, {d:"Basketball", k:"Košarka", a:["Nogomet","Tenis","Skijanje"]},
+                    {d:"Ski", k:"Skije", a:["Sanke","Bicikl","Lopta"]}, {d:"Eis", k:"Led", a:["Snijeg","Voda","Vjetar"]},
+                    {d:"Halle", k:"Dvorana", a:["Stadion","Teren","Park"]}, {d:"Stadion", k:"Stadion", a:["Dvorana","Igralište","Park"]},
+                    {d:"Schiedsrichter", k:"Sudac", a:["Trener","Igrač","Kapetan"]}, {d:"Trainer", k:"Trener", a:["Sudac","Igrač","Doktor"]},
+                    {d:"Medaille", k:"Medalja", a:["Pehar","Zastava","Pobjeda"]}, {d:"Pokal", k:"Pehar", a:["Medalja","Zastava","Pobjeda"]}
                 ],
                 kleidung: [
-                    {d:"Hose", k:"Hlače", a:["Majica","Jakna","Cipele"]}, {d:"T-Shirt", k:"Majica", a:["Košulja","Hlače","Vesta"]},
-                    {d:"Jacke", k:"Jakna", a:["Kaput","Majica","Hlače"]}, {d:"Schuhe", k:"Cipele", a:["Čarape","Noga","Tenisice"]}
+                    {d:"Hose", k:"Hlače", a:["Majica","Cipele","Kapa"]}, {d:"T-Shirt", k:"Majica", a:["Košulja","Hlače","Vesta"]},
+                    {d:"Jacke", k:"Jakna", a:["Kaput","Majica","Hlače"]}, {d:"Schuhe", k:"Cipele", a:["Čarape","Noga","Tenisice"]},
+                    {d:"Pullover", k:"Vesta", a:["Jakna","Majica","Kapa"]}, {d:"Socken", k:"Čarape", a:["Cipele","Hlače","Rukavice"]},
+                    {d:"Mütze", k:"Kapa", a:["Šešir","Šal","Rukavice"]}, {d:"Handschuhe", k:"Rukavice", a:["Kapa","Šal","Čarape"]},
+                    {d:"Kleid", k:"Haljina", a:["Suknja","Majica","Hose"]}, {d:"Rock", k:"Suknja", a:["Haljina","Hlače","Jakna"]},
+                    {d:"Hemd", k:"Košulja", a:["Majica","Vesta","Jakna"]}, {d:"Anzug", k:"Odijelo", a:["Haljina","Kaput","Hlače"]},
+                    {d:"Mantel", k:"Kaput", a:["Jakna","Kabanica","Vesta"]}, {d:"Gürtel", k:"Remen", a:["Torba","Šešir","Cipele"]},
+                    {d:"Brille", k:"Naočale", a:["Sat","Prsten","Kapa"]}, {d:"Uhr", k:"Sat", a:["Naočale","Prsten","Narukvica"]},
+                    {d:"Tasche", k:"Torba", a:["Ruksak","Novčanik","Kišobran"]}, {d:"Novčanik", k:"Novčanik", a:["Torba","Ruksak","Kišobran"]},
+                    {d:"Kišobran", k:"Kišobran", a:["Torba","Naočale","Kapa"]}, {d:"Šal", k:"Šal", a:["Kapa","Rukavice","Vesta"]}
                 ],
                 natur: [
                     {d:"Wald", k:"Šuma", a:["Gora","Rijeka","More"]}, {d:"Baum", k:"Drvo", a:["List","Cvijet","Šuma"]},
-                    {d:"Blume", k:"Cvijet", a:["Trava","Vrt","Drvo"]}, {d:"Berg", k:"Planina", a:["Brdo","Dolina","Rijeka"]}
+                    {d:"Blume", k:"Cvijet", a:["Trava","Vrt","Drvo"]}, {d:"Berg", k:"Planina", a:["Brdo","Dolina","Rijeka"]},
+                    {d:"Fluss", k:"Rijeka", a:["Jezero","More","Potok"]}, {d:"See", k:"Jezero", a:["Rijeka","More","Voda"]},
+                    {d:"Meer", k:"More", a:["Otok","Plaža","Brod"]}, {d:"Gras", k:"Trava", a:["Zemlja","Cvijet","Vrt"]},
+                    {d:"Stein", k:"Kamen", a:["Zemlja","Pijesak","Stijena"]}, {d:"Erde", k:"Zemlja", a:["Nebo","Voda","Kamen"]},
+                    {d:"Himmel", k:"Nebo", a:["Zemlja","Zrak","Sunce"]}, {d:"Stern", k:"Zvijezda", a:["Mjesec","Sunce","Planet"]},
+                    {d:"Mond", k:"Mjesec", a:["Sunce","Zvijezda","Zemlja"]}, {d:"Insel", k:"Otok", a:["More","Obala","Brod"]},
+                    {d:"Strand", k:"Plaža", a:["More","Pijesak","Obala"]}, {d:"Sand", k:"Pijesak", a:["Kamen","Zemlja","Voda"]},
+                    {d:"Welle", k:"Val", a:["Voda","More","Vjetar"]}, {d:"Tal", k:"Dolina", a:["Planina","Brdo","Šuma"]},
+                    {d:"Feld", k:"Polje", a:["Šuma","Livada","Vrt"]}, {d:"Wiese", k:"Livada", a:["Polje","Šuma","Vrt"]}
                 ],
                 wetter: [
                     {d:"Sonne", k:"Sunce", a:["Kiša","Snijeg","Oblak"]}, {d:"Regen", k:"Kiša", a:["Sunce","Oblak","Vjetar"]},
-                    {d:"Schnee", k:"Snijeg", a:["Led","Zima","Kiša"]}, {d:"Wind", k:"Vjetar", a:["Oluja","Zrak","Sunce"]}
+                    {d:"Snijeg", k:"Snijeg", a:["Led","Zima","Kiša"]}, {d:"Wind", k:"Vjetar", a:["Oluja","Zrak","Sunce"]},
+                    {d:"Wolke", k:"Oblak", a:["Nebo","Kiša","Sunce"]}, {d:"Wetter", k:"Vrijeme", a:["Sat","Dan","Godina"]},
+                    {d:"Hitze", k:"Vrućina", a:["Hladnoća","Ljeto","Sunce"]}, {d:"Kälte", k:"Hladnoća", a:["Vrućina","Zima","Led"]},
+                    {d:"Sturm", k:"Oluja", a:["Vjetar","Kiša","Grmljavina"]}, {d:"Gewitter", k:"Grmljavina", a:["Kiša","Oluja","Munja"]},
+                    {d:"Nebel", k:"Magla", a:["Dim","Oblak","Kiša"]}, {d:"Eis", k:"Led", a:["Snijeg","Voda","Vjetar"]},
+                    {d:"Grad", k:"Stupanj", a:["Mjera","Vrijeme","Toplina"]}, {d:"Blitz", k:"Munja", a:["Grom","Kiša","Vjetar"]},
+                    {d:"Donner", k:"Grom", a:["Munja","Oluja","Kiša"]}, {d:"Regenbogen", k:"Duga", a:["Kiša","Sunce","Boja"]},
+                    {d:"Hagel", k:"Tuča", a:["Kiša","Snijeg","Led"]}, {d:"Schatten", k:"Sjena", a:["Svjetlo","Sunce","Mrak"]},
+                    {d:"Mrak", k:"Mrak", a:["Svjetlo", "Sjena", "Noć"]}, {d:"Svjetlo", k:"Svjetlo", a:["Mrak", "Sjena", "Dan"]}
                 ],
                 stadt: [
                     {d:"Park", k:"Park", a:["Ulica","Trg","Banka"]}, {d:"Strasse", k:"Ulica", a:["Cesta","Most","Trg"]},
-                    {d:"Haus", k:"Zgrada", a:["Grad","Trgovina","Kino"]}, {d:"Kino", k:"Kino", a:["Kazalište","Muzej","Park"]}
+                    {d:"Stadt", k:"Grad", a:["Selo","Mjesto","Ulica"]}, {d:"Dorf", k:"Selo", a:["Grad","Polje","Kuća"]},
+                    {d:"Platz", k:"Trg", a:["Ulica","Park","Zgrada"]}, {d:"Brücke", k:"Most", a:["Rijeka","Cesta","Put"]},
+                    {d:"Gebäude", k:"Zgrada", a:["Kuća","Stan","Kino"]}, {d:"Markt", k:"Tržnica", a:["Trgovina","Kupovina","Voće"]},
+                    {d:"Kirche", k:"Crkva", a:["Zgrada","Škola","Bolnica"]}, {d:"Bank", k:"Banka", a:["Pošta","Kino","Park"]},
+                    {d:"Museum", k:"Muzej", a:["Kino","Kazalište","Škola"]}, {d:"Kino", k:"Kino", a:["Muzej","Kazalište","Park"]},
+                    {d:"Theater", k:"Kazalište", a:["Kino","Muzej","Škola"]}, {d:"Bibliothek", k:"Knjižnica", a:["Knjižara","Škola","Ured"]},
+                    {d:"Post", k:"Pošta", a:["Banka","Policija","Škola"]}, {d:"Polizei", k:"Policija", a:["Vojska","Vatrogasci","Banka"]},
+                    {d:"Feuerwehr", k:"Vatrogasci", a:["Policija","Bolnica","Vojska"]}, {d:"Bolnica", k:"Bolnica", a:["Škola","Crkva","Banka"]},
+                    {d:"Hotel", k:"Hotel", a:["Kuća","Stan","Šator"]}, {d:"Restoran", k:"Restoran", a:["Kafić","Kuhinja","Trgovina"]},
+                    {d:"Ured", k:"Ured", a:["Škola","Banka","Kuća"]}, {d:"Trgovina", k:"Trgovina", a:["Tržnica","Banka","Škola"]}
                 ],
                 verkehr: [
                     {d:"Auto", k:"Auto", a:["Bus","Vlak","Brod"]}, {d:"Zug", k:"Vlak", a:["Bus","Auto","Tramvaj"]},
-                    {d:"Bus", k:"Autobus", a:["Vlak","Auto","Avion"]}, {d:"Flugzeug", k:"Avion", a:["Brod","Vlak","Nebo"]}
+                    {d:"Bus", k:"Autobus", a:["Vlak","Auto","Avion"]}, {d:"Flugzeug", k:"Avion", a:["Brod","Vlak","Nebo"]},
+                    {d:"Schiff", k:"Brod", a:["Čamac","More","Luka"]}, {d:"Fahrrad", k:"Bicikl", a:["Motor","Kotač","Cesta"]},
+                    {d:"Ampel", k:"Semafor", a:["Svjetlo","Cesta","Križanje"]}, {d:"Stau", k:"Gužva", a:["Promet","Auto","Cesta"]},
+                    {d:"Bahnhof", k:"Kolodvor", a:["Zračna luka","Luka","Trg"]}, {d:"Taxi", k:"Taxi", a:["Auto","Bus","Vlak"]},
+                    {d:"Motorrad", k:"Motor", a:["Bicikl","Auto","Bus"]}, {d:"LKW", k:"Kamion", a:["Auto","Kombi","Bager"]},
+                    {d:"Hubschrauber", k:"Helikopter", a:["Avion","Ptica","Brod"]}, {d:"U-Bahn", k:"Metr", a:["Vlak","Tramvaj","Bus"]},
+                    {d:"Tram", k:"Tramvaj", a:["Metr","Bus","Vlak"]}, {d:"Fahrkarte", k:"Karta", a:["Novac","Putovnica","Dokument"]},
+                    {d:"Ticket", k:"Ulaznica", a:["Karta","Novac","Pozivnica"]}, {d:"Hafen", k:"Luka", a:["Kolodvor","Aerodrom","Park"]},
+                    {d:"Flughafen", k:"Zračna luka", a:["Luka","Kolodvor","Stanica"]}, {d:"Tankstelle", k:"Benzinska postaja", a:["Trgovina","Garaža","Parking"]}
                 ],
                 koerper: [
                     {d:"Hand", k:"Ruka", a:["Noga","Glava","Oko"]}, {d:"Fuss", k:"Noga", a:["Ruka","Prst","Glava"]},
-                    {d:"Kopf", k:"Glava", a:["Lice","Kosa","Vrat"]}, {d:"Auge", k:"Oko", a:["Uho","Nos","Usta"]}
+                    {d:"Kopf", k:"Glava", a:["Lice","Kosa","Vrat"]}, {d:"Auge", k:"Oko", a:["Uho","Nos","Usta"]},
+                    {d:"Ohr", k:"Uho", a:["Oko","Nos","Glava"]}, {d:"Nase", k:"Nos", a:["Usta","Oko","Lice"]},
+                    {d:"Mund", k:"Usta", a:["Zub","Jezik","Usne"]}, {d:"Herz", k:"Srce", a:["Krv","Prsa","Ljubav"]},
+                    {d:"Haar", k:"Kosa", a:["Glava","Koža","Boja"]}, {d:"Bauch", k:"Trbuh", a:["Leđa","Prsa","Noga"]},
+                    {d:"Rücken", k:"Leđa", a:["Trbuh","Prsa","Vrat"]}, {d:"Finger", k:"Prst", a:["Ruka","Noga","Nokat"]},
+                    {d:"Zahn", k:"Zub", a:["Usta","Jezik","Usna"]}, {d:"Zunge", k:"Jezik", a:["Zub","Usta","Grlo"]},
+                    {d:"Hals", k:"Vrat", a:["Glava","Rame","Prsa"]}, {d:"Schulter", k:"Rame", a:["Vrat","Ruka","Leđa"]},
+                    {d:"Knie", k:"Koljeno", a:["Lakat","Noga","Ruka"]}, {d:"Ellbogen", k:"Lakat", a:["Koljeno","Ruka","Noga"]},
+                    {d:"Blut", k:"Krv", a:["Srce","Voda","Tijelo"]}, {d:"Haut", k:"Koža", a:["Kosa","Nokat","Meso"]}
                 ],
                 gesundheit: [
                     {d:"Arzt", k:"Liječnik", a:["Bolnica","Lijek","Zub"]}, {d:"Medizin", k:"Lijek", a:["Bolest","Doktor","Temperatura"]},
-                    {d:"Schmerz", k:"Bol", a:["Zdravlje","Rana","Lijek"]}, {d:"Apotheke", k:"Ljekarna", a:["Bolnica","Trgovina","Škola"]}
+                    {d:"Schmerz", k:"Bol", a:["Zdravlje","Rana","Lijek"]}, {d:"Apotheke", k:"Ljekarna", a:["Bolnica","Trgovina","Škola"]},
+                    {d:"Krankenhaus", k:"Bolnica", a:["Škola","Crkva","Banka"]}, {d:"Pflaster", k:"Flaster", a:["Zavoj","Lijek","Rana"]},
+                    {d:"Spritze", k:"Injekcija", a:["Lijek","Doktor","Bol"]}, {d:"Husten", k:"Kašalj", a:["Prehlada","Grlo","Nos"]},
+                    {d:"Fieber", k:"Temperatura", a:["Hladnoća","Bolest","Zdravlje"]}, {d:"Gesundheit", k:"Zdravlje", a:["Bolest","Smrt","Život"]},
+                    {d:"Schnupfen", k:"Prehlada", a:["Kašalj","Gripa","Zdravlje"]}, {d:"Grippe", k:"Gripa", a:["Prehlada","Kašalj","Vrućica"]},
+                    {d:"Wunde", k:"Rana", a:["Bol","Flaster","Zavoj"]}, {d:"Verband", k:"Zavoj", a:["Flaster","Rana","Lijek"]},
+                    {d:"Tablette", k:"Tableta", a:["Sirup","Lijek","Voda"]}, {d:"Rezept", k:"Recept", a:["Uputnica","Lijek","Papir"]},
+                    {d:"Untersuchung", k:"Pregled", a:["Ispitivanje","Liječenje","Odmor"]}, {d:"Zahnarzt", k:"Zubar", a:["Liječnik","Oftalmolog","Kirurg"]},
+                    {d:"Brille", k:"Naočale", a:["Leće","Oko","Vid"]}, {d:"Rollstuhl", k:"Invalidska kolica", a:["Krevet","Štake","Auto"]}
                 ],
                 familie: [
-                    {d:"Bruder", k:"Brat", a:["Sestra","Otac","Majka"]}, {d:"Sestra", k:"Sestra", a:["Brat","Majka","Baka"]},
-                    {d:"Mutter", k:"Majka", a:["Otac","Kćer","Sin"]}, {d:"Vater", k:"Otac", a:["Majka","Djed","Brat"]}
+                    {d:"Bruder", k:"Brat", a:["Sestra","Otac","Majka"]}, {d:"Schwester", k:"Sestra", a:["Brat","Majka","Baka"]},
+                    {d:"Mutter", k:"Majka", a:["Otac","Kćer","Sin"]}, {d:"Vater", k:"Otac", a:["Majka","Djed","Brat"]},
+                    {d:"Kind", k:"Dijete", a:["Sin","Kći","Beba"]}, {d:"Sohn", k:"Sin", a:["Kći","Brat","Otac"]},
+                    {d:"Tochter", k:"Kći", a:["Sin","Sestra","Majka"]}, {d:"Oma", k:"Baka", a:["Djed","Majka","Tetka"]},
+                    {d:"Opa", k:"Djed", a:["Baka","Otac","Stric"]}, {d:"Familie", k:"Obitelj", a:["Ljudi","Prijatelji","Grad"]},
+                    {d:"Baby", k:"Beba", a:["Dijete","Sin","Kći"]}, {d:"Eltern", k:"Roditelji", a:["Djeca","Baka i djed","Obitelj"]},
+                    {d:"Großeltern", k:"Baka i djed", a:["Roditelji","Tetka i tetak","Djeca"]}, {d:"Tante", k:"Tetka", a:["Ujak","Majka","Sestra"]},
+                    {d:"Onkel", k:"Ujak", a:["Tetka","Otac","Brat"]}, {d:"Cousine", k:"Sestrična", a:["Bratanac","Sestra","Brat"]},
+                    {d:"Cousin", k:"Bratanac", a:["Sestrična","Brat","Sestra"]}, {d:"Mann", k:"Muž", a:["Žena","Otac","Sin"]},
+                    {d:"Frau", k:"Žena", a:["Muž","Majka","Kći"]}, {d:"Hochzeit", k:"Vjenčanje", a:["Zabava","Rođendan","Odmor"]}
                 ],
                 berufe: [
                     {d:"Koch", k:"Kuhar", a:["Pilot","Doktor","Sudac"]}, {d:"Lehrer", k:"Učitelj", a:["Prodavač","Pekar","Vrtlar"]},
-                    {d:"Polizist", k:"Policajac", a:["Vojnik","Liječnik","Pilot"]}, {d:"Bäcker", k:"Pekar", a:["Kuhar","Mesar","Konobar"]}
+                    {d:"Polizist", k:"Policajac", a:["Vojnik","Liječnik","Pilot"]}, {d:"Bäcker", k:"Pekar", a:["Kuhar","Mesar","Konobar"]},
+                    {d:"Arbeit", k:"Posao", a:["Odmor","Igra","Škola"]}, {d:"Pilot", k:"Pilot", a:["Vozač","Kapetan","Liječnik"]},
+                    {d:"Friseur", k:"Frizer", a:["Brijač","Krojač","Zubar"]}, {d:"Bauer", k:"Seljak", a:["Radnik","Vrtlar","Kuhar"]},
+                    {d:"Verkäufer", k:"Prodavač", a:["Kupac","Vlasnik","Radnik"]}, {d:"Doktor", k:"Doktor", a:["Sestra","Pacijent","Bolnica"]},
+                    {d:"Kellner", k:"Konobar", a:["Kuhar","Gost","Vlasnik"]}, {d:"Mechaniker", k:"Mehaničar", a:["Vozač","Inženjer","Radnik"]},
+                    {d:"Postbote", k:"Poštar", a:["Prodavač","Policajac","Učitelj"]}, {d:"Soldat", k:"Vojnik", a:["Policajac","Vatrogasac","Pilot"]},
+                    {d:"Ingenieur", k:"Inženjer", a:["Arhitekt","Radnik","Učitelj"]}, {d:"Anwalt", k:"Odvjetnik", a:["Sudac","Policajac","Urednik"]},
+                    {d:"Maler", k:"Slikar", a:["Pisac","Glazbenik","Glumac"]}, {d:"Schauspieler", k:"Glumac", a:["Pjevač","Slikar","Pisac"]},
+                    {d:"Sekretär", k:"Tajnik", a:["Šef","Radnik","Prodavač"]}, {d:"Manager", k:"Menadžer", a:["Direktor","Radnik","Vlasnik"]}
                 ],
                 bad: [
                     {d:"Seife", k:"Sapun", a:["Voda","Četka","Ručnik"]}, {d:"Handtuch", k:"Ručnik", a:["Sapun","Voda","Ogledalo"]},
-                    {d:"Zahnbürste", k:"Četkica za zube", a:["Pasta","Zub","Voda"]}, {d:"Spiegel", k:"Ogledalo", a:["Zid","Slika","Prozor"]}
+                    {d:"Zahnbürste", k:"Četkica za zube", a:["Pasta","Zub","Voda"]}, {d:"Spiegel", k:"Ogledalo", a:["Zid","Slika","Prozor"]},
+                    {d:"Toilette", k:"WC", a:["Kupaonica","Tuš","Soba"]}, {d:"Dusche", k:"Tuš", a:["Kada","Voda","Pranje"]},
+                    {d:"Badewanne", k:"Kada", a:["Tuš","Bazen","More"]}, {d:"Kamm", k:"Češalj", a:["Četka","Škare","Kosa"]},
+                    {d:"Föhn", k:"Sušilo za kosu", a:["Lampa","Češalj","Voda"]}, {d:"Zahnpasta", k:"Pasta za zube", a:["Četkica","Sapun","Voda"]},
+                    {d:"Rasierer", k:"Brijač", a:["Škare","Češalj","Sapun"]}, {d:"Schwamm", k:"Spužva", a:["Krpica","Sapun","Voda"]},
+                    {d:"Bademantel", k:"Ogrtač", a:["Ručnik","Pidžama","Majica"]}, {d:"Waschbecken", k:"Umivaonik", a:["Kada","Sudoper","WC"]},
+                    {d:"Shampoo", k:"Šampon", a:["Sapun","Gel","Voda"]}, {d:"Creme", k:"Krema", a:["Losion","Ulje","Sapun"]},
+                    {d:"Parfüm", k:"Parfem", a:["Miris","Voda","Sapun"]}, {d:"Schminke", k:"Šminka", a:["Boja","Krema","Ogledalo"]},
+                    {d:"Nagelfeile", k:"Turpija za nokte", a:["Škare","Češalj","Četka"]}, {d:"Badezimmer", k:"Kupaonica", a:["Soba","Kuhinja","Vrt"]}
                 ],
                 zeit: [
                     {d:"Tag", k:"Dan", a:["Noć","Tjedan","Sat"]}, {d:"Woche", k:"Tjedan", a:["Mjesec","Godina","Dan"]},
-                    {d:"Stunde", k:"Sat", a:["Minuta","Vrijeme","Dan"]}, {d:"Monat", k:"Mjesec", a:["Godina","Tjedan","Dan"]}
+                    {d:"Stunde", k:"Sat", a:["Minuta","Vrijeme","Dan"]}, {d:"Monat", k:"Mjesec", a:["Godina","Tjedan","Dan"]},
+                    {d:"Zeit", k:"Vrijeme", a:["Sat","Dan","Godina"]}, {d:"Nacht", k:"Noć", a:["Dan","Jutro","Večer"]},
+                    {d:"Jahr", k:"Godina", a:["Mjesec","Datum","Vrijeme"]}, {d:"Heute", k:"Danas", a:["Sutra","Jučer","Sada"]},
+                    {d:"Morgen", k:"Sutra", a:["Danas","Jučer","Ujutro"]}, {d:"Minute", k:"Minuta", a:["Sekunda","Sat","Dan"]},
+                    {d:"Sekunde", k:"Sekunda", a:["Minuta","Sat","Trenutak"]}, {d:"Datum", k:"Datum", a:["Vrijeme","Sat","Kalendar"]},
+                    {d:"Kalender", k:"Kalendar", a:["Sat","Datum","Vrijeme"]}, {d:"Vormittag", k:"Prije podne", a:["Poslije podne","Jutro","Večer"]},
+                    {d:"Nachmittag", k:"Poslije podne", a:["Prije podne","Večer","Noć"]}, {d:"Abend", k:"Večer", a:["Jutro","Dan","Noć"]},
+                    {d:"Frühling", k:"Proljeće", a:["Ljeto","Jesen","Zima"]}, {d:"Sommer", k:"Ljeto", a:["Proljeće","Jesen","Zima"]},
+                    {d:"Herbst", k:"Jesen", a:["Proljeće","Ljeto","Zima"]}, {d:"Winter", k:"Zima", a:["Proljeće","Ljeto","Jesen"]}
                 ],
                 urlaub: [
                     {d:"Meer", k:"More", a:["Otok","Plaža","Brod"]}, {d:"Insel", k:"Otok", a:["More","Planina","Plaža"]},
-                    {d:"Koffer", k:"Kovčeg", a:["Torba","Putovanje","Auto"]}, {d:"Strand", k:"Plaža", a:["Pijesak","More","Sunce"]}
+                    {d:"Koffer", k:"Kovčeg", a:["Torba","Putovanje","Auto"]}, {d:"Strand", k:"Plaža", a:["Pijesak","More","Sunce"]},
+                    {d:"Urlaub", k:"Godišnji odmor", a:["Praznici","Putovanje","Škola"]}, {d:"Reise", k:"Putovanje", a:["Put","Avion","Auto"]},
+                    {d:"Hotel", k:"Hotel", a:["Soba","Kuća","Šator"]}, {d:"Ausflug", k:"Izlet", a:["Putovanje","Šetnja","Posjet"]},
+                    {d:"Reisepass", k:"Putovnica", a:["Osobna iskaznica","Karta","Novac"]}, {d:"Berge", k:"Planine", a:["Brda","Doline","More"]},
+                    {d:"Camping", k:"Kampiranje", a:["Hotel","Kuća","Odmor"]}, {d:"Zelt", k:"Šator", a:["Kuća","Hotel","Soba"]},
+                    {d:"Wohnmobil", k:"Kamp-kućica", a:["Auto","Kamion","Brod"]}, {d:"Landkarte", k:"Karta", a:["Knjiga","Novine","Slika"]},
+                    {d:"Postkarte", k:"Razglednica", a:["Pismo","Karta","Slika"]}, {d:"Andenken", k:"Suvenir", a:["Dar","Kupovina","Sjećanje"]},
+                    {d:"Sonnencreme", k:"Krema za sunčanje", a:["Sapun","Voda","Ulje"]}, {d:"Sonnenbrille", k:"Sunčane naočale", a:["Kapa","Sat","Naočale"]},
+                    {d:"Schwimmbad", k:"Bazen", a:["More","Rijeka","Jezero"]}, {d:"Bergsteigen", k:"Planinarenje", a:["Trčanje","Plivanje","Skijanje"]}
                 ],
                 musik: [
                     {d:"Lied", k:"Pjesma", a:["Radio","Gitara","Glas"]}, {d:"Gitarre", k:"Gitara", a:["Klavir","Bubanj","Violina"]},
-                    {d:"Radio", k:"Radio", a:["Televizor","Mobitel","Zvuk"]}, {d:"Tanz", k:"Ples", a:["Pjesma","Igra","Glazba"]}
+                    {d:"Radio", k:"Radio", a:["Televizor","Mobitel","Zvuk"]}, {d:"Tanz", k:"Ples", a:["Pjesma","Igra","Glazba"]},
+                    {d:"Musik", k:"Glazba", a:["Zvuk","Pjesma","Instrument"]}, {d:"Sänger", k:"Pjevač", a:["Glumac","Svirka","Glas"]},
+                    {d:"Klavier", k:"Klavir", a:["Gitara","Harmonika","Bubnjevi"]}, {d:"Konzert", k:"Koncert", a:["Kino","Kazalište","Zabava"]},
+                    {d:"Melodie", k:"Melodija", a:["Ritam","Zvuk","Glas"]}, {d:"Instrument", k:"Instrument", a:["Alat", "Stroj", "Auto"]},
+                    {d:"Rhythmus", k:"Ritam", a:["Melodija","Zvuk","Takt"]}, {d:"Schlagzeug", k:"Bubnjevi", a:["Gitara","Klavir","Violina"]},
+                    {d:"Geige", k:"Violina", a:["Gitara","Klavir","Čelo"]}, {d:"Flöte", k:"Flauta", a:["Truba","Klarinet","Saksofon"]},
+                    {d:"Trompete", k:"Truba", a:["Flauta","Klarinet","Saksofon"]}, {d:"Orchester", k:"Orkestar", a:["Bend","Zbor","Grupa"]},
+                    {d:"Chor", k:"Zbor", a:["Orkestar","Bend","Grupa"]}, {d:"Bühne", k:"Pozornica", a:["Dvorana","Sjedalo","Zastor"]},
+                    {d:"Lautstärke", k:"Glasnoća", a:["Zvuk","Tišina","Ton"]}, {d:"Komponist", k:"Skladatelj", a:["Pjevač","Svirka","Pisac"]}
                 ]
-            },
+            }
+        },
             verben: [
                 {d:"sein", k:"biti", a:["imati","raditi","htjeti"]}, {d:"haben", k:"imati", a:["biti","dobiti","dati"]},
                 {d:"machen", k:"raditi", a:["stvoriti","popraviti","ići"]}, {d:"gehen", k:"ići", a:["doći","trčati","hodati"]},
