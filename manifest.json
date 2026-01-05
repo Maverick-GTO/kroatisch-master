@@ -1,11 +1,11 @@
 {
   "name": "Kroatisch Master",
   "short_name": "Kroatisch",
-  "description": "Pop-Art Kroatisch Trainer",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
+  "description": "Kroatisch lernen im Pop-Art Stil",
   "icons": [
     {
       "src": "icon.png",
