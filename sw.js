@@ -1,5 +1,5 @@
-const cacheName = 'kroatisch-v3';
-const assets = ['./', './index.html', './manifest.json'];
+const cacheName = 'kroatisch-v4';
+const assets = ['./', './index.html', './manifest.json', './icon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(cacheName).then(cache => cache.addAll(assets)));
