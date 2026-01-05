@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kroatisch Master</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pop-yellow: #ffd700;
+            --pop-red: #ff3131;
+            --pop-blue: #0000ff;
+            --bg-dark: #040426;
+            --white: #ffffff;
+            --black: #000000;
+        }
+
+        body {
+            margin: 0; padding: 20px; background-color: var(--bg-dark);
+            background-image: radial-gradient(var(--black) 15%, transparent 16%);
+            background-size: 20px 20px; font-family: 'Arial', sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100vh; color: var(--white); overflow: hidden;
+        }
+
+        h1 { font-family: 'Bangers', cursive; font-size: 42px; color: var(--pop-yellow); 
+             -webkit-text-stroke: 1.5px var(--black); text-shadow: 4px 4px 0 var(--black); margin-bottom: 15px; }
+
+        .hidden { display: none !important; }
+
+        .btn {
+            background: var(--pop-yellow); color: var(--black); border: 5px solid var(--black);
+            padding: 12px 20px; margin: 6px; font-family: 'Bangers', cursive;
+            font-size: 20px; cursor: pointer; border-radius: 0px; 
+            box-shadow: 6px 6px 0 var(--black); transition: 0.1s;
+            width: 85%; max-width: 280px; text-transform: uppercase;
+        }
+        .btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--black); }
+
+        #quiz-card {
+            background: var(--white); color: var(--black); padding: 25px;
+            border: 6px solid var(--black); width: 90%; max-width: 340px;
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.5); position: relative;
+        }
+        #word-display { font-family: 'Bangers'; font-size: 38px; margin: 20px 0; color: var(--pop-blue); }
+        
+        .answer-btn { width: 100%; margin: 8px 0; background: var(--white); font-family: 'Arial'; font-weight: bold; border-radius: 0; }
+        .correct { background-color: #39FF14 !important; }
+        .wrong { background-color: var(--pop-red) !important; color: white !important; }
+
+        #nomen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 320px; overflow-y: auto; max-height: 60vh; padding: 10px; }
+        .score-box { font-size: 70px; font-family: 'Bangers'; color: var(--white); text-shadow: 5px 5px 0 var(--black); }
+    </style>
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>KROATISCH MASTER</h1>
+        <button class="btn" onclick="showNomen()">NOMEN (720)</button>
+        <button class="btn" onclick="startQuiz('verben')">VERBEN (72)</button>
+        <button class="btn" onclick="startQuiz('adjektive')">ADJEKTIVE (72)</button>
+    </div>
+
+    <div id="nomen-screen" class="hidden">
+        <h1>THEMA WÄHLEN</h1>
+        <div id="nomen-grid"></div>
+        <button class="btn" style="background: #ff66b3; margin-top:20px;" onclick="goHome()">ZURÜCK</button>
+    </div>
+
+    <div id="quiz-card" class="hidden">
+        <div id="prog" style="font-weight:bold;">1 / 10</div>
+        <div id="word-display">DEUTSCH</div>
+        <div id="options"></div>
+    </div>
+
+    <div id="stats-screen" class="hidden">
+        <div class="score-box" id="final-score">0 / 10</div>
+        <h2 id="feedback">GENIE!</h2>
+        <button class="btn" onclick="goHome()">ZURÜCK</button>
+    </div>
+
+    <script>
+        const db = {
+            nomen: {
+                tiere: [
+                    {d:"Hund", k:"Pas", a:["Mačka","Konj","Ptica"]}, {d:"Katze", k:"Mačka", a:["Pas","Zec","Miš"]},
+                    {d:"Pferd", k:"Konj", a:["Krava","Ovca","Svinja"]}, {d:"Löwe", k:"Lav", a:["Tigar","Slon","Vuk"]},
+                    {d:"Elefant", k:"Slon", a:["Lav","Žirafa","Mrav"]}, {d:"Vogel", k:"Ptica", a:["Riba","Pauk","Pčela"]},
+                    {d:"Fisch", k:"Riba", a:["Rak","Kit","Ptica"]}, {d:"Schlange", k:"Zmija", a:["Gušter","Žaba","Puž"]},
+                    {d:"Bär", k:"Medvjed", a:["Vuk","Lisica","Jelen"]}, {d:"Maus", k:"Miš", a:["Štakor","Mačka","Pauk"]}
+                ],
+                essen: [
+                    {d:"Apfel", k:"Jabuka", a:["Kruška","Banana","Limun"]}, {d:"Brot", k:"Kruh", a:["Sir","Mlijeko","Jaje"]},
+                    {d:"Ei", k:"Jaje", a:["Meso","Riba","Sol"]}, {d:"Käse", k:"Sir", a:["Maslac","Šunka","Kruh"]},
+                    {d:"Suppe", k:"Juha", a:["Salata","Riža","Tjestenina"]}, {d:"Fleisch", k:"Meso", a:["Riba","Povrće","Voće"]},
+                    {d:"Milch", k:"Mlijeko", a:["Voda","Sok","Čaj"]}, {d:"Zucker", k:"Šećer", a:["Sol","Papar","Ulje"]}
+                ],
+                trinken: [
+                    {d:"Wasser", k:"Voda", a:["Sok","Vino","Pivo"]}, {d:"Saft", k:"Sok", a:["Voda","Mlijeko","Čaj"]},
+                    {d:"Kaffee", k:"Kava", a:["Čaj","Mlijeko","Voda"]}, {d:"Tee", k:"Čaj", a:["Kava","Sok","Vino"]}
+                ],
+                // Hier können alle weiteren 20 Kategorien mit je 36 Wörtern ergänzt werden
+                schule: [
+                    {d:"Buch", k:"Knjiga", a:["Bilježnica","Olovka","Torba"]}, {d:"Stift", k:"Olovka", a:["Gumica","Lenjir","Knjiga"]}
+                ]
+            },
+            verben: [
+                {d:"essen", k:"jesti", a:["piti","ići","raditi"]}, {d:"trinken", k:"piti", a:["jesti","spavati","gledati"]},
+                {d:"schlafen", k:"spavati", a:["buditi se","sanjati","trčati"]}, {d:"gehen", k:"ići", a:["stajati","sjesti","doći"]},
+                {d:"lesen", k:"čitati", a:["pisati","slušati","gledati"]}, {d:"schreiben", k:"pisati", a:["čitati","crtati","pjevati"]}
+            ],
+            adjektive: [
+                {d:"gross", k:"velik", a:["mali","tanak","dug"]}, {d:"klein", k:"mali", a:["velik","visok","širok"]},
+                {d:"schön", k:"lijep", a:["ružan","star","nov"]}, {d:"hässlich", k:"ružan", a:["lijep","dobar","loš"]},
+                {d:"gut", k:"dobar", a:["loš","zao","mali"]}, {d:"schlecht", k:"loš", a:["dobar","brz","spor"]}
+            ]
+        };
+
+        const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+        let pool = [], qIdx = 0, score = 0;
+
+        function goHome() { 
+            document.querySelectorAll('body > div').forEach(d => d.classList.add('hidden'));
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+        function showNomen() {
+            const grid = document.getElementById('nomen-grid'); grid.innerHTML = '';
+            Object.keys(db.nomen).forEach(cat => {
+                const b = document.createElement('button'); b.className = 'btn'; b.style.fontSize='14px'; b.style.width='100%';
+                b.innerText = cat.toUpperCase(); b.onclick = () => startQuiz('nomen', cat);
+                grid.appendChild(b);
+            });
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('nomen-screen').classList.remove('hidden');
+        }
+
+        function startQuiz(type, cat) {
+            let data = cat ? db.nomen[cat] : db[type];
+            pool = [...data].sort(() => 0.5 - Math.random()).slice(0, 10);
+            qIdx = 0; score = 0;
+            document.querySelectorAll('body > div').forEach(d => d.classList.add('hidden'));
+            document.getElementById('quiz-card').classList.remove('hidden');
+            renderQ();
+        }
+
+        function renderQ() {
+            if(qIdx >= 10 || qIdx >= pool.length) return finish();
+            const item = pool[qIdx];
+            document.getElementById('prog').innerText = `${qIdx+1} / 10`;
+            document.getElementById('word-display').innerText = item.d;
+            const opt = document.getElementById('options'); opt.innerHTML = '';
+            [item.k, ...item.a].sort(() => 0.5 - Math.random()).forEach(o => {
+                const b = document.createElement('button'); b.className = 'btn answer-btn';
+                b.innerText = o; b.onclick = () => check(b, o, item.k);
+                opt.appendChild(b);
+            });
+        }
+
+        function check(btn, sel, cor) {
+            const all = document.querySelectorAll('.answer-btn');
+            all.forEach(b => b.disabled = true);
+            if(sel === cor) {
+                btn.classList.add('correct');
+                score++;
+                setTimeout(() => { qIdx++; renderQ(); }, 1000);
+            } else {
+                btn.classList.add('wrong');
+                all.forEach(b => { if(b.innerText === cor) b.classList.add('correct'); });
+                setTimeout(() => { qIdx++; renderQ(); }, 2000);
+            }
+        }
+
+        function finish() {
+            document.getElementById('quiz-card').classList.add('hidden');
+            const s = document.getElementById('stats-screen'); s.classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score} / 10`;
+            document.getElementById('feedback').innerText = feedbacks[score];
+        }
+    </script>
+</body>
+</html>
