@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kroatisch Master</title>
     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,66 +16,62 @@
         }
 
         body {
-            margin: 0; padding: 20px; 
-            /* Hintergrund Schwarz */
-            background-color: var(--black);
-            /* Kleine Punkte, zufällig wirkende Verteilung durch Versatz */
+            margin: 0; padding: 15px; background-color: var(--black);
+            /* Winzige rote und weisse Punkte, zufällig versetzt */
             background-image: 
-                radial-gradient(var(--cro-red) 1px, transparent 1px),
-                radial-gradient(var(--cro-white) 1px, transparent 1px),
-                radial-gradient(var(--cro-red) 1px, transparent 1px),
-                radial-gradient(var(--cro-white) 1px, transparent 1px);
-            background-size: 40px 40px, 40px 40px, 60px 60px, 60px 60px;
-            background-position: 0 0, 20px 20px, 10px 30px, 45px 15px;
+                radial-gradient(var(--cro-red) 0.8px, transparent 0.8px),
+                radial-gradient(var(--cro-white) 0.8px, transparent 0.8px),
+                radial-gradient(var(--cro-red) 0.8px, transparent 0.8px),
+                radial-gradient(var(--cro-white) 0.8px, transparent 0.8px);
+            background-size: 35px 35px, 45px 45px, 55px 55px, 65px 65px;
+            background-position: 0 0, 15px 20px, 30px 10px, 10px 40px;
             font-family: 'Arial', sans-serif;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             height: 100vh; color: var(--cro-white); overflow: hidden;
         }
 
         h1 { 
-            font-family: 'Bangers', cursive; font-size: 48px; 
-            color: var(--cro-white);
-            -webkit-text-stroke: 2px var(--cro-red);
-            text-shadow: 4px 4px 0 var(--black); margin-bottom: 25px; 
-            letter-spacing: 2px;
+            font-family: 'Bangers', cursive; font-size: 52px; /* Grösser */
+            color: var(--cro-white); -webkit-text-stroke: 2px var(--cro-red);
+            text-shadow: 5px 5px 0 var(--black); margin-bottom: 30px; 
         }
 
         .hidden { display: none !important; }
 
-        /* Buttons im Pop-Art Stil */
+        /* Hauptmenü Buttons */
         .btn {
             background: var(--cro-white); color: var(--cro-red); 
-            border: 4px solid var(--black);
-            padding: 15px 10px; margin: 8px; font-family: 'Bangers', cursive;
-            font-size: 24px; cursor: pointer; border-radius: 0px; 
-            box-shadow: 6px 6px 0 var(--black); transition: 0.1s;
-            width: 90%; max-width: 300px; text-transform: uppercase;
+            border: 5px solid var(--black); padding: 20px 15px; margin: 10px;
+            font-family: 'Bangers', cursive; font-size: 28px; /* Deutlich grösser */
+            cursor: pointer; border-radius: 0px; box-shadow: 8px 8px 0 var(--black);
+            width: 95%; max-width: 320px; text-transform: uppercase;
         }
-        .btn:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--black); }
+        .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--black); }
 
-        /* Quiz Container */
+        /* Quiz Card */
         #quiz-card {
             background: var(--cro-white); color: var(--black); padding: 30px;
-            border: 6px solid var(--black); width: 85%; max-width: 340px;
-            box-shadow: 12px 12px 0 rgba(255,255,255,0.2); position: relative;
+            border: 6px solid var(--black); width: 90%; max-width: 360px;
+            box-shadow: 15px 15px 0 rgba(255,255,255,0.1);
         }
-        #word-display { font-family: 'Bangers'; font-size: 44px; margin: 25px 0; color: var(--cro-blue); }
+        #word-display { font-family: 'Bangers'; font-size: 52px; margin: 20px 0; color: var(--cro-blue); }
         
-        .answer-btn { width: 100%; margin: 10px 0; background: #f9f9f9; border: 3px solid var(--black); box-shadow: 4px 4px 0 var(--black); color: var(--black); font-size: 20px; }
-        .correct { background-color: #39FF14 !important; color: black !important; }
+        .answer-btn { width: 100%; margin: 12px 0; padding: 18px; font-size: 22px; background: #f0f0f0; border: 4px solid var(--black); box-shadow: 5px 5px 0 var(--black); }
+        .correct { background-color: #39FF14 !important; }
         .wrong { background-color: var(--cro-red) !important; color: white !important; }
 
-        /* 3-Spalten Raster ohne Scrollen */
+        /* Nomen-Grid: 3 Spalten, grössere Schrift */
         #nomen-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 10px; 
-            width: 100%; max-width: 400px; 
-            padding: 5px;
+            display: grid; grid-template-columns: repeat(3, 1fr); 
+            gap: 12px; width: 100%; max-width: 420px; padding: 10px;
         }
-        #nomen-grid .btn { font-size: 13px; padding: 10px 2px; width: 100%; margin: 0; box-shadow: 3px 3px 0 var(--black); border-width: 3px; }
+        #nomen-grid .btn { 
+            font-size: 18px; /* Grösser als vorher */
+            padding: 15px 5px; width: 100%; margin: 0; 
+            box-shadow: 4px 4px 0 var(--black); border-width: 3px; 
+        }
 
-        .score-box { font-size: 80px; font-family: 'Bangers'; color: var(--cro-white); text-shadow: 5px 5px 0 var(--black); -webkit-text-stroke: 2px var(--cro-blue); }
+        .score-box { font-size: 90px; font-family: 'Bangers'; text-shadow: 6px 6px 0 var(--black); }
     </style>
 </head>
 <body>
@@ -87,21 +84,21 @@
     </div>
 
     <div id="nomen-screen" class="hidden">
-        <h1 style="font-size: 32px;">THEMA WÄHLEN</h1>
+        <h1 style="font-size: 38px;">THEMA</h1>
         <div id="nomen-grid"></div>
-        <button class="btn" style="background: var(--cro-blue); color: var(--cro-white); margin-top:25px;" onclick="goHome()">ZURÜCK</button>
+        <button class="btn" style="background: var(--cro-blue); color: #fff; margin-top:30px;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <div id="quiz-card" class="hidden">
-        <div id="prog" style="font-weight:bold; font-size: 18px;">1 / 10</div>
-        <div id="word-display">DEUTSCH</div>
+        <div id="prog" style="font-weight:bold; font-size: 20px;">1 / 10</div>
+        <div id="word-display">WORT</div>
         <div id="options"></div>
     </div>
 
     <div id="stats-screen" class="hidden">
         <div class="score-box" id="final-score">0 / 10</div>
-        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 40px; -webkit-text-stroke: 1px var(--cro-red);">GENIE!</h2>
-        <button class="btn" style="background: var(--cro-blue); color: var(--cro-white);" onclick="goHome()">ZURÜCK</button>
+        <h2 id="feedback" style="font-family: 'Bangers'; font-size: 45px; -webkit-text-stroke: 1.5px var(--cro-red);">GENIE!</h2>
+        <button class="btn" style="background: var(--cro-blue); color: #fff;" onclick="goHome()">ZURÜCK</button>
     </div>
 
     <script>
@@ -332,15 +329,8 @@
         function check(btn, sel, cor) {
             const all = document.querySelectorAll('.answer-btn');
             all.forEach(b => b.disabled = true);
-            if(sel === cor) {
-                btn.classList.add('correct');
-                score++;
-                setTimeout(() => { qIdx++; renderQ(); }, 1000);
-            } else {
-                btn.classList.add('wrong');
-                all.forEach(b => { if(b.innerText === cor) b.classList.add('correct'); });
-                setTimeout(() => { qIdx++; renderQ(); }, 2000);
-            }
+            if(sel === cor) { btn.classList.add('correct'); score++; setTimeout(() => { qIdx++; renderQ(); }, 1000); }
+            else { btn.classList.add('wrong'); all.forEach(b => { if(b.innerText === cor) b.classList.add('correct'); }); setTimeout(() => { qIdx++; renderQ(); }, 2000); }
         }
 
         function finish() {
@@ -349,7 +339,6 @@
             document.getElementById('final-score').innerText = `${score} / 10`;
             document.getElementById('feedback').innerText = feedbacks[score];
         }
-        window.onload = goHome;
     </script>
 </body>
 </html>
