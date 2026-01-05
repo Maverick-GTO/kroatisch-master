@@ -4,70 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kroatisch Master</title>
-    
     <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#000000">
-    
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --cro-blue: #005EB8;
-            --cro-red: #E4002B;
-            --cro-white: #FFFFFF;
-            --black: #000000;
-        }
+        :root { --cro-red: #E4002B; --cro-blue: #005EB8; --white: #FFFFFF; --black: #000000; }
 
         body {
             margin: 0; padding: 10px; background-color: var(--black);
-            /* Winzige rote und weisse Punkte (Pop-Art Stil) */
+            /* Winzige rote und weisse Punkte, zufällig verteilt */
             background-image: 
-                radial-gradient(var(--cro-white) 1px, transparent 0),
-                radial-gradient(var(--cro-red) 1px, transparent 0);
-            background-size: 25px 25px, 35px 35px;
-            background-position: 0 0, 15px 15px;
-            font-family: 'Arial', sans-serif;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 100vh; color: var(--cro-white); overflow: hidden;
+                radial-gradient(var(--cro-red) 0.6px, transparent 0.6px),
+                radial-gradient(var(--white) 0.6px, transparent 0.6px);
+            background-size: 20px 20px, 33px 33px;
+            background-position: 0 0, 10px 15px;
+            font-family: 'Arial', sans-serif; 
+            /* Flexbox für die Zentrierung des Hauptinhalts auf der Seite */
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            color: var(--white); 
+            overflow: hidden;
+        }
+
+        /* Container für den Startbildschirm, um Inhalte darin zu zentrieren */
+        #start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         h1 { 
-            font-family: 'Bangers', cursive; font-size: 55px; 
-            color: var(--cro-white); -webkit-text-stroke: 2px var(--cro-red);
-            text-shadow: 6px 6px 0 var(--black); margin: 10px 0; text-align: center;
+            font-family: 'Bangers'; font-size: 58px; color: var(--white); 
+            -webkit-text-stroke: 2px var(--cro-red); text-shadow: 6px 6px 0 var(--black); 
+            margin-bottom: 30px; /* Mehr Abstand nach unten */
+            text-align: center; 
         }
-
         .hidden { display: none !important; }
 
-        /* Grosse Menü-Buttons */
         .btn {
-            background: var(--cro-white); color: var(--cro-red); border: 6px solid var(--black);
-            padding: 25px 15px; margin: 12px; font-family: 'Bangers', cursive;
-            font-size: 35px; cursor: pointer; border-radius: 0px; 
-            box-shadow: 10px 10px 0 var(--black); width: 95%; max-width: 380px; text-transform: uppercase;
+            background: var(--white); color: var(--cro-red); border: 6px solid var(--black);
+            padding: 25px 10px; 
+            margin: 15px 0; /* Mehr Abstand zwischen den Buttons, kein seitlicher Margin */
+            font-family: 'Bangers'; font-size: 38px;
+            cursor: pointer; box-shadow: 10px 10px 0 var(--black); 
+            width: 90%; /* Etwas schmaler für bessere Optik */
+            max-width: 380px; text-transform: uppercase;
         }
         .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--black); }
 
-        /* Quiz Karte */
-        #quiz-card {
-            background: var(--cro-white); color: var(--black); padding: 35px;
-            border: 8px solid var(--black); width: 90%; max-width: 420px;
-            box-shadow: 15px 15px 0 rgba(255,255,255,0.1); text-align: center;
-        }
-        #word-display { font-family: 'Bangers'; font-size: 65px; margin: 20px 0; color: var(--cro-blue); }
-        .answer-btn { width: 100%; margin: 15px 0; padding: 25px; font-size: 30px; background: #eee; border: 5px solid var(--black); box-shadow: 6px 6px 0 var(--black); font-weight: bold; }
+        #quiz-card { background: var(--white); color: var(--black); padding: 40px; border: 8px solid var(--black); width: 90%; max-width: 420px; text-align: center; }
+        #word-display { font-family: 'Bangers'; font-size: 75px; margin: 20px 0; color: var(--cro-blue); }
+        .answer-btn { width: 100%; margin: 15px 0; padding: 25px; font-size: 32px; background: #eee; border: 5px solid var(--black); box-shadow: 6px 6px 0 var(--black); font-weight: bold; }
         .correct { background-color: #39FF14 !important; }
         .wrong { background-color: var(--cro-red) !important; color: white !important; }
 
-        /* Nomen-Raster: 3 Spalten, KEINE Zahlen */
-        #nomen-grid { 
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; 
-            width: 100%; max-width: 480px; padding: 5px;
-        }
-        #nomen-grid .btn { font-size: 18px; padding: 20px 2px; width: 100%; margin: 0; box-shadow: 5px 5px 0 var(--black); border: 4px solid var(--black); }
+        /* Nomen-Grid: 3 Spalten */
+        #nomen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 480px; }
+        #nomen-grid .btn { font-size: 20px; padding: 22px 2px; width: 100%; margin: 0; box-shadow: 5px 5px 0 var(--black); border: 4px solid var(--black); }
 
-        .score-box { font-size: 110px; font-family: 'Bangers'; text-shadow: 8px 8px 0 var(--black); }
+        .score-box { font-size: 120px; font-family: 'Bangers'; text-shadow: 8px 8px 0 var(--black); }
     </style>
 </head>
 <body>
@@ -281,7 +280,7 @@
             ]
         };
 
-      const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+     const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
         let pool = [], qIdx = 0, score = 0;
 
         function goHome() { 
