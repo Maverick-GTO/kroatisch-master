@@ -267,4 +267,226 @@
                     {d:"Haar", k:"Kosa", a:["Glava","Koža","Boja"]}, {d:"Bauch", k:"Trbuh", a:["Leđa","Prsa","Noga"]},
                     {d:"Rücken", k:"Leđa", a:["Trbuh","Prsa","Vrat"]}, {d:"Finger", k:"Prst", a:["Ruka","Noga","Nokat"]},
                     {d:"Zahn", k:"Zub", a:["Usta","Jezik","Usna"]}, {d:"Zunge", k:"Jezik", a:["Zub","Usta","Grlo"]},
-                    {d:"Hals", k:"
+                    {d:"Hals", k:"Vrat", a:["Glava","Rame","Prsa"]}, {d:"Schulter", k:"Rame", a:["Vrat","Ruka","Leđa"]},
+                    {d:"Knie", k:"Koljeno", a:["Lakat","Noga","Ruka"]}, {d:"Ellbogen", k:"Lakat", a:["Koljeno","Ruka","Noga"]},
+                    {d:"Blut", k:"Krv", a:["Srce","Voda","Tijelo"]}, {d:"Haut", k:"Koža", a:["Kosa","Nokat","Meso"]}
+                ],
+                gesundheit: [
+                    {d:"Arzt", k:"Liječnik", a:["Bolnica","Lijek","Zub"]}, {d:"Medizin", k:"Lijek", a:["Bolest","Doktor","Temperatura"]},
+                    {d:"Schmerz", k:"Bol", a:["Zdravlje","Rana","Lijek"]}, {d:"Apotheke", k:"Ljekarna", a:["Bolnica","Trgovina","Škola"]},
+                    {d:"Krankenhaus", k:"Bolnica", a:["Škola","Crkva","Banka"]}, {d:"Pflaster", k:"Flaster", a:["Zavoj","Lijek","Rana"]},
+                    {d:"Spritze", k:"Injekcija", a:["Lijek","Doktor","Bol"]}, {d:"Husten", k:"Kašalj", a:["Prehlada","Grlo","Nos"]},
+                    {d:"Fieber", k:"Temperatura", a:["Hladnoća","Bolest","Zdravlje"]}, {d:"Gesundheit", k:"Zdravlje", a:["Bolest","Smrt","Život"]},
+                    {d:"Schnupfen", k:"Prehlada", a:["Kašalj","Gripa","Zdravlje"]}, {d:"Grippe", k:"Gripa", a:["Prehlada","Kašalj","Vrućica"]},
+                    {d:"Wunde", k:"Rana", a:["Bol","Flaster","Zavoj"]}, {d:"Verband", k:"Zavoj", a:["Flaster","Rana","Lijek"]},
+                    {d:"Tablette", k:"Tableta", a:["Sirup","Lijek","Voda"]}, {d:"Rezept", k:"Recept", a:["Uputnica","Lijek","Papir"]},
+                    {d:"Untersuchung", k:"Pregled", a:["Ispitivanje","Liječenje","Odmor"]}, {d:"Zahnarzt", k:"Zubar", a:["Liječnik","Oftalmolog","Kirurg"]},
+                    {d:"Brille", k:"Naočale", a:["Leće","Oko","Vid"]}, {d:"Rollstuhl", k:"Invalidska kolica", a:["Krevet","Štake","Auto"]}
+                ],
+                familie: [
+                    {d:"Bruder", k:"Brat", a:["Sestra","Otac","Majka"]}, {d:"Schwester", k:"Sestra", a:["Brat","Majka","Baka"]},
+                    {d:"Mutter", k:"Majka", a:["Otac","Kćer","Sin"]}, {d:"Vater", k:"Otac", a:["Majka","Djed","Brat"]},
+                    {d:"Kind", k:"Dijete", a:["Sin","Kći","Beba"]}, {d:"Sohn", k:"Sin", a:["Kći","Brat","Otac"]},
+                    {d:"Tochter", k:"Kći", a:["Sin","Sestra","Majka"]}, {d:"Oma", k:"Baka", a:["Djed","Majka","Tetka"]},
+                    {d:"Opa", k:"Djed", a:["Baka","Otac","Stric"]}, {d:"Familie", k:"Obitelj", a:["Ljudi","Prijatelji","Grad"]},
+                    {d:"Baby", k:"Beba", a:["Dijete","Sin","Kći"]}, {d:"Eltern", k:"Roditelji", a:["Djeca","Baka i djed","Obitelj"]},
+                    {d:"Großeltern", k:"Baka i djed", a:["Roditelji","Tetka i tetak","Djeca"]}, {d:"Tante", k:"Tetka", a:["Ujak","Majka","Sestra"]},
+                    {d:"Onkel", k:"Ujak", a:["Tetka","Otac","Brat"]}, {d:"Cousine", k:"Sestrična", a:["Bratanac","Sestra","Brat"]},
+                    {d:"Cousin", k:"Bratanac", a:["Sestrična","Brat","Sestra"]}, {d:"Mann", k:"Muž", a:["Žena","Otac","Sin"]},
+                    {d:"Frau", k:"Žena", a:["Muž","Majka","Kći"]}, {d:"Hochzeit", k:"Vjenčanje", a:["Zabava","Rođendan","Odmor"]}
+                ],
+                berufe: [
+                    {d:"Koch", k:"Kuhar", a:["Pilot","Doktor","Sudac"]}, {d:"Lehrer", k:"Učitelj", a:["Prodavač","Pekar","Vrtlar"]},
+                    {d:"Polizist", k:"Policajac", a:["Vojnik","Liječnik","Pilot"]}, {d:"Bäcker", k:"Pekar", a:["Kuhar","Mesar","Konobar"]},
+                    {d:"Arbeit", k:"Posao", a:["Odmor","Igra","Škola"]}, {d:"Pilot", k:"Pilot", a:["Vozač","Kapetan","Liječnik"]},
+                    {d:"Friseur", k:"Frizer", a:["Brijač","Krojač","Zubar"]}, {d:"Bauer", k:"Seljak", a:["Radnik","Vrtlar","Kuhar"]},
+                    {d:"Verkäufer", k:"Prodavač", a:["Kupac","Vlasnik","Radnik"]}, {d:"Doktor", k:"Doktor", a:["Sestra","Pacijent","Bolnica"]},
+                    {d:"Kellner", k:"Konobar", a:["Kuhar","Gost","Vlasnik"]}, {d:"Mechaniker", k:"Mehaničar", a:["Vozač","Inženjer","Radnik"]},
+                    {d:"Postbote", k:"Poštar", a:["Prodavač","Policajac","Učitelj"]}, {d:"Soldat", k:"Vojnik", a:["Policajac","Vatrogasac","Pilot"]},
+                    {d:"Ingenieur", k:"Inženjer", a:["Arhitekt","Radnik","Učitelj"]}, {d:"Anwalt", k:"Odvjetnik", a:["Sudac","Policajac","Urednik"]},
+                    {d:"Maler", k:"Slikar", a:["Pisac","Glazbenik","Glumac"]}, {d:"Schauspieler", k:"Glumac", a:["Pjevač","Slikar","Pisac"]},
+                    {d:"Sekretär", k:"Tajnik", a:["Šef","Radnik","Prodavač"]}, {d:"Manager", k:"Menadžer", a:["Direktor","Radnik","Vlasnik"]}
+                ],
+                bad: [
+                    {d:"Seife", k:"Sapun", a:["Voda","Četka","Ručnik"]}, {d:"Handtuch", k:"Ručnik", a:["Sapun","Voda","Ogledalo"]},
+                    {d:"Zahnbürste", k:"Četkica za zube", a:["Pasta","Zub","Voda"]}, {d:"Spiegel", k:"Ogledalo", a:["Zid","Slika","Prozor"]},
+                    {d:"Toilette", k:"WC", a:["Kupaonica","Tuš","Soba"]}, {d:"Dusche", k:"Tuš", a:["Kada","Voda","Pranje"]},
+                    {d:"Badewanne", k:"Kada", a:["Tuš","Bazen","More"]}, {d:"Kamm", k:"Češalj", a:["Četka","Škare","Kosa"]},
+                    {d:"Föhn", k:"Sušilo za kosu", a:["Lampa","Češalj","Voda"]}, {d:"Zahnpasta", k:"Pasta za zube", a:["Četkica","Sapun","Voda"]},
+                    {d:"Rasierer", k:"Brijač", a:["Škare","Češalj","Sapun"]}, {d:"Schwamm", k:"Spužva", a:["Krpica","Sapun","Voda"]},
+                    {d:"Bademantel", k:"Ogrtač", a:["Ručnik","Pidžama","Majica"]}, {d:"Waschbecken", k:"Umivaonik", a:["Kada","Sudoper","WC"]},
+                    {d:"Shampoo", k:"Šampon", a:["Sapun","Gel","Voda"]}, {d:"Creme", k:"Krema", a:["Losion","Ulje","Sapun"]},
+                    {d:"Parfüm", k:"Parfem", a:["Miris","Voda","Sapun"]}, {d:"Schminke", k:"Šminka", a:["Boja","Krema","Ogledalo"]},
+                    {d:"Nagelfeile", k:"Turpija za nokte", a:["Škare","Češalj","Četka"]}, {d:"Badezimmer", k:"Kupaonica", a:["Soba","Kuhinja","Vrt"]}
+                ],
+                zeit: [
+                    {d:"Tag", k:"Dan", a:["Noć","Tjedan","Sat"]}, {d:"Woche", k:"Tjedan", a:["Mjesec","Godina","Dan"]},
+                    {d:"Stunde", k:"Sat", a:["Minuta","Vrijeme","Dan"]}, {d:"Monat", k:"Mjesec", a:["Godina","Tjedan","Dan"]},
+                    {d:"Zeit", k:"Vrijeme", a:["Sat","Dan","Godina"]}, {d:"Nacht", k:"Noć", a:["Dan","Jutro","Večer"]},
+                    {d:"Jahr", k:"Godina", a:["Mjesec","Datum","Vrijeme"]}, {d:"Heute", k:"Danas", a:["Sutra","Jučer","Sada"]},
+                    {d:"Morgen", k:"Sutra", a:["Danas","Jučer","Ujutro"]}, {d:"Minute", k:"Minuta", a:["Sekunda","Sat","Dan"]},
+                    {d:"Sekunde", k:"Sekunda", a:["Minuta","Sat","Trenutak"]}, {d:"Datum", k:"Datum", a:["Vrijeme","Sat","Kalendar"]},
+                    {d:"Kalender", k:"Kalendar", a:["Sat","Datum","Vrijeme"]}, {d:"Vormittag", k:"Prije podne", a:["Poslije podne","Jutro","Večer"]},
+                    {d:"Nachmittag", k:"Poslije podne", a:["Prije podne","Večer","Noć"]}, {d:"Abend", k:"Večer", a:["Jutro","Dan","Noć"]},
+                    {d:"Frühling", k:"Proljeće", a:["Ljeto","Jesen","Zima"]}, {d:"Sommer", k:"Ljeto", a:["Proljeće","Jesen","Zima"]},
+                    {d:"Herbst", k:"Jesen", a:["Proljeće","Ljeto","Zima"]}, {d:"Winter", k:"Zima", a:["Proljeće","Ljeto","Jesen"]}
+                ],
+                urlaub: [
+                    {d:"Meer", k:"More", a:["Otok","Plaža","Brod"]}, {d:"Insel", k:"Otok", a:["More","Planina","Plaža"]},
+                    {d:"Koffer", k:"Kovčeg", a:["Torba","Putovanje","Auto"]}, {d:"Strand", k:"Plaža", a:["Pijesak","More","Sunce"]},
+                    {d:"Urlaub", k:"Godišnji odmor", a:["Praznici","Putovanje","Škola"]}, {d:"Reise", k:"Putovanje", a:["Put","Avion","Auto"]},
+                    {d:"Hotel", k:"Hotel", a:["Soba","Kuća","Šator"]}, {d:"Ausflug", k:"Izlet", a:["Putovanje","Šetnja","Posjet"]},
+                    {d:"Reisepass", k:"Putovnica", a:["Osobna iskaznica","Karta","Novac"]}, {d:"Berge", k:"Planine", a:["Brda","Doline","More"]},
+                    {d:"Camping", k:"Kampiranje", a:["Hotel","Kuća","Odmor"]}, {d:"Zelt", k:"Šator", a:["Kuća","Hotel","Soba"]},
+                    {d:"Wohnmobil", k:"Kamp-kućica", a:["Auto","Kamion","Brod"]}, {d:"Landkarte", k:"Karta", a:["Knjiga","Novine","Slika"]},
+                    {d:"Postkarte", k:"Razglednica", a:["Pismo","Karta","Slika"]}, {d:"Andenken", k:"Suvenir", a:["Dar","Kupovina","Sjećanje"]},
+                    {d:"Sonnencreme", k:"Krema za sunčanje", a:["Sapun","Voda","Ulje"]}, {d:"Sonnenbrille", k:"Sunčane naočale", a:["Kapa","Sat","Naočale"]},
+                    {d:"Schwimmbad", k:"Bazen", a:["More","Rijeka","Jezero"]}, {d:"Bergsteigen", k:"Planinarenje", a:["Trčanje","Plivanje","Skijanje"]}
+                ],
+                musik: [
+                    {d:"Lied", k:"Pjesma", a:["Radio","Gitara","Glas"]}, {d:"Gitarre", k:"Gitara", a:["Klavir","Bubanj","Violina"]},
+                    {d:"Radio", k:"Radio", a:["Televizor","Mobitel","Zvuk"]}, {d:"Tanz", k:"Ples", a:["Pjesma","Igra","Glazba"]},
+                    {d:"Musik", k:"Glazba", a:["Zvuk","Pjesma","Instrument"]}, {d:"Sänger", k:"Pjevač", a:["Glumac","Svirka","Glas"]},
+                    {d:"Klavier", k:"Klavir", a:["Gitara","Harmonika","Bubnjevi"]}, {d:"Konzert", k:"Koncert", a:["Kino","Kazalište","Zabava"]},
+                    {d:"Melodie", k:"Melodija", a:["Ritam","Zvuk","Glas"]}, {d:"Instrument", k:"Instrument", a:["Alat", "Stroj", "Auto"]},
+                    {d:"Rhythmus", k:"Ritam", a:["Melodija","Zvuk","Takt"]}, {d:"Schlagzeug", k:"Bubnjevi", a:["Gitara","Klavir","Violina"]},
+                    {d:"Geige", k:"Violina", a:["Gitara","Klavir","Čelo"]}, {d:"Flöte", k:"Flauta", a:["Truba","Klarinet","Saksofon"]},
+                    {d:"Trompete", k:"Truba", a:["Flauta","Klarinet","Saksofon"]}, {d:"Orchester", k:"Orkestar", a:["Bend","Zbor","Grupa"]},
+                    {d:"Chor", k:"Zbor", a:["Orkestar","Bend","Grupa"]}, {d:"Bühne", k:"Pozornica", a:["Dvorana","Sjedalo","Zastor"]},
+                    {d:"Lautstärke", k:"Glasnoća", a:["Zvuk","Tišina","Ton"]}, {d:"Komponist", k:"Skladatelj", a:["Pjevač","Svirka","Pisac"]}
+                ]
+            },
+            verben: [
+                {d:"sein", k:"biti", a:["imati","raditi","htjeti"]}, {d:"haben", k:"imati", a:["biti","dobiti","dati"]},
+                {d:"machen", k:"raditi", a:["stvoriti","popraviti","ići"]}, {d:"gehen", k:"ići", a:["doći","trčati","hodati"]},
+                {d:"kommen", k:"doći", a:["ići","otići","stići"]}, {d:"sehen", k:"vidjeti", a:["gledati","čuti","osjetiti"]},
+                {d:"hören", k:"čuti", a:["slušati","vidjeti","govoriti"]}, {d:"sagen", k:"reći", a:["govoriti","pričati","vikati"]},
+                {d:"essen", k:"jesti", a:["piti","kuhati","žvakati"]}, {d:"trinken", k:"piti", a:["jesti","liti","gutati"]},
+                {d:"schlafen", k:"spavati", a:["buditi se","ležati","sanjati"]}, {d:"aufstehen", k:"ustati", a:["leći","sjesti","hodati"]},
+                {d:"arbeiten", k:"raditi", a:["odmarati","igrati","učiti"]}, {d:"lernen", k:"učiti", a:["znati","čitati","pisati"]},
+                {d:"spielen", k:"igrati", a:["raditi","trčati","zabavljati se"]}, {d:"kaufen", k:"kupiti", a:["prodati","platiti","uzeti"]},
+                {d:"geben", k:"dati", a:["uzeti","dobiti","pokloniti"]}, {d:"nehmen", k:"uzeti", a:["dati","ostaviti","nositi"]},
+                {d:"wissen", k:"znati", a:["misliti","vjerovati","učiti"]}, {d:"denken", k:"misliti", a:["znati","vjerovati","sanjati"]},
+                {d:"wollen", k:"htjeti", a:["morati","moći","željeti"]}, {d:"können", k:"moći", a:["morati","htjeti","znati"]},
+                {d:"müssen", k:"morati", a:["htjeti","moći","trebati"]}, {d:"lieben", k:"voljeti", a:["mrziti","sviđati se","ljubiti"]},
+                {d:"fragen", k:"pitati", a:["odgovoriti","reći","tražiti"]}, {d:"antworten", k:"odgovoriti", a:["pitati","reći","šutjeti"]},
+                {d:"laufen", k:"trčati", a:["hodati","sjediti","stajati"]}, {d:"springen", k:"skočiti", a:["pasti","trčati","ići"]},
+                {d:"fliegen", k:"letjeti", a:["voziti","ploviti","ići"]}, {d:"singen", k:"pjevati", a:["plesati","slušati","pisati"]},
+                {d:"tanzen", k:"plesati", a:["pjevati","skakati","igrati"]}, {d:"lachen", k:"smijati se", a:["plakati","vikati","šutjeti"]},
+                {d:"weinen", k:"plakati", a:["smijati se","pjevati","spavati"]}, {d:"verkaufen", k:"prodati", a:["kupiti","platiti","dati"]},
+                {d:"helfen", k:"pomoći", a:["odmoći","raditi","dati"]}, {d:"warten", k:"čekati", a:["ići","doći","vidjeti"]},
+                {d:"öffnen", k:"otvoriti", a:["zatvoriti","razbiti","popraviti"]}, {d:"schliessen", k:"zatvoriti", a:["otvoriti","razbiti","graditi"]},
+                {d:"leben", k:"živjeti", a:["umrijeti","rasti","raditi"]}, {d:"sterben", k:"umrijeti", a:["živjeti","rasti","pasti"]},
+                {d:"hassen", k:"mrziti", a:["voljeti","trebati","željeti"]}, {d:"verstehen", k:"razumjeti", a:["znati","misliti","čuti"]},
+                {d:"sitzen", k:"sjediti", a:["stajati","ležati","ići"]}, {d:"stehen", k:"stajati", a:["sjediti","hodati","ležati"]},
+                {d:"liegen", k:"ležati", a:["stajati","sjediti","spavati"]}, {d:"bringen", k:"donijeti", a:["odnijeti","uzeti","dati"]},
+                {d:"finden", k:"naći", a:["tražiti","izgubiti","naći"]}, {d:"verlieren", k:"izgubiti", a:["naći","pobijediti","dobiti"]},
+                {d:"gewinnen", k:"pobijediti", a:["izgubiti","igrati","pasti"]}, {d:"kochen", k:"kuhati", a:["jesti","piti","rezati"]},
+                {d:"waschen", k:"prati", a:["čistiti","kuhati","brisati"]}, {d:"tragen", k:"nositi", a:["uzeti","držati","ostaviti"]},
+                {d:"schwimmen", k:"plivati", a:["roniti","skakati","trčati"]}, {d:"fahren", k:"voziti", a:["hodati","letjeti","ploviti"]},
+                {d:"reisen", k:"putovati", a:["ostati","doći","otići"]}, {d:"putzen", k:"čistiti", a:["prljati","raditi","prati"]},
+                {d:"backen", k:"peći", a:["kuhati","jesti","piti"]}, {d:"zeichnen", k:"crtati", a:["pisati","čitati","pjevati"]},
+                {d:"malen", k:"slikati", k:"crtati", a:["pisati","pjevati","plesati"]}, {d:"besuchen", k:"posjetiti", a:["otići","doći","vidjeti"]},
+                {d:"brauchen", k:"trebati", a:["imati","htjeti","željeti"]}, {d:"suchen", k:"tražiti", a:["naći","izgubiti","imati"]},
+                {d:"vergessen", k:"zaboraviti", a:["znati","učiti","pamtiti"]}, {d:"erinnern", k:"sjetiti se", a:["zaboraviti","znati","misliti"]},
+                {d:"hoffen", k:"nadati se", a:["znati","htjeti","misliti"]}, {d:"glauben", k:"vjerovati", a:["znati","misliti","nadati se"]},
+                {d:"zeigen", k:"pokazati", a:["vidjeti","uzeti","dati"]}, {d:"rufen", k:"zvati", a:["čuti","reći","vikati"]},
+                {d:"schlagen", k:"udariti", a:["pasti","udariti","mahnuti"]}, {d:"werfen", k:"baciti", a:["uhvatiti","uzeti","dati"]}
+            ],
+            adjektive: [
+                {d:"gross", k:"velik", a:["mali","tanak","dug"]}, {d:"klein", k:"mali", a:["velik","visok","širok"]},
+                {d:"gut", k:"dobar", a:["loš","zao","lijep"]}, {d:"schlecht", k:"loš", a:["dobar","ružan","kriv"]},
+                {d:"neu", k:"nov", a:["star","mlad","svjež"]}, {d:"alt", k:"star", a:["nov","mlad","drevni"]},
+                {d:"jung", k:"mlad", a:["star","nov","dijete"]}, {d:"schön", k:"lijep", a:["ružan","dobar","divan"]},
+                {d:"hässlich", k:"ružan", a:["lijep","loš","gadan"]}, {d:"heiss", k:"vruć", a:["hladan","topao","mlak"]},
+                {d:"kalt", k:"hladan", a:["vruć","topao","leden"]}, {d:"warm", k:"topao", a:["vruć","hladan","ugodan"]},
+                {d:"schnell", k:"brz", a:["spor","hitro","kratak"]}, {d:"langsam", k:"spor", a:["brz","jak","težak"]},
+                {d:"teuer", k:"skup", a:["jeftin","vrijedan","novac"]}, {d:"billig", k:"jeftin", a:["skup","loš","malo"]},
+                {d:"einfach", k:"jednostavan", a:["težak","lak","kompliciran"]}, {d:"schwierig", k:"težak", a:["lak","jednostavan","tvrd"]},
+                {d:"richtig", k:"točan", a:["kriv","pogrešan","istinit"]}, {d:"falsch", k:"kriv", a:["točan","pravi","lažan"]},
+                {d:"hell", k:"svijetao", a:["taman","mračan","jasan"]}, {d:"dunkel", k:"taman", a:["svijetao","mračan","crn"]},
+                {d:"laut", k:"glasan", a:["tih","miran","zvuk"]}, {d:"leise", k:"tih", a:["glasan","miran","šapat"]},
+                {d:"glücklich", k:"sretan", a:["tužan","ljut","umoran"]}, {d:"traurig", k:"tužan", a:["sretan","vesel","dobar"]},
+                {d:"breit", k:"širok", a:["uzak","dug","kratak"]}, {d:"schmal", k:"uzak", a:["širok","velik","mali"]},
+                {d:"schwer", k:"težak", a:["lak","velik","mali"]}, {d:"leicht", k:"lak", a:["težak","tanak","brz"]},
+                {d:"hart", k:"tvrd", a:["mekan","težak","lak"]}, {d:"weich", k:"mekan", a:["tvrd","oštar","tup"]},
+                {d:"reich", k:"bogat", a:["siromašan","skup","velik"]}, {d:"arm", k:"siromašan", a:["bogat","dobar","loš"]},
+                {d:"pun", k:"pun", a:["prazan","velik","mali"]}, {d:"leer", k:"prazan", a:["pun","otvoren","zatvoren"]},
+                {d:"stark", k:"jak", a:["slab","velik","brz"]}, {d:"schwach", k:"slab", a:["jak","mali","spor"]},
+                {d:"gesund", k:"zdrav", a:["bolestan","dobar","loš"]}, {d:"krank", k:"bolestan", a:["zdrav","umoran","sretan"]},
+                {d:"wichtig", k:"važan", a:["nebitan","mali","dobar"]}, {d:"interessant", k:"zanimljiv", a:["dosadan","lijep","dobar"]},
+                {d:"langweilig", k:"dosadan", a:["zanimljiv","smiješan","veseo"]}, {d:"lustig", k:"smiješan", a:["dosadan","tužan","ozbiljan"]},
+                {d:"ernst", k:"ozbiljan", a:["smiješan","veseo","zaigran"]}, {d:"müde", k:"umoran", a:["odmoran","budan","sretan"]},
+                {d:"wach", k:"budan", a:["umoran","pospan","sretan"]}, {d:"sauber", k:"čist", a:["prljav","loš","stari"]},
+                {d:"schmutzig", k:"prljav", a:["čist","nov","lijep"]}, {d:"lang", k:"dug", a:["kratak","širok","mali"]},
+                {d:"kurz", k:"kratak", a:["dug","velik","visok"]}, {d:"hoch", k:"visok", a:["nizak","mali","kratak"]},
+                {d:"niedrig", k:"nizak", a:["visok","velik","dug"]}, {d:"breit", k:"širok", a:["uzak","mali","kratak"]},
+                {d:"eng", k:"uzak", a:["širok","velik","dug"]}, {d:"fett", k:"debeo", a:["mršav","tanak","mali"]},
+                {d:"dünn", k:"mršav", a:["debeo","velik","jak"]}, {d:"lecker", k:"ukusan", a:["loš","gorak","slan"]},
+                {d:"süß", k:"slatko", a:["kiselo","gorko","slano"]}, {d:"sauer", k:"kiselo", a:["slatko","slano","gorko"]},
+                {d:"salzig", k:"slano", a:["slatko","kiselo","gorko"]}, {d:"bitter", k:"gorko", a:["slatko","slano","kiselo"]},
+                {d:"offen", k:"otvoren", a:["zatvoren","prazan","pun"]}, {d:"geschlossen", k:"zatvoren", a:["otvoren","pun","prazan"]},
+                {d:"früher", k:"ranije", a:["kasnije","sada","odmah"]}, {d:"später", k:"kasnije", a:["ranije","sada","nikada"]},
+                {d:"langsam", k:"polako", a:["brzo","odmah","sada"]}, {d:"schnell", k:"brzo", a:["polako","kasnije","tih"]}
+            ]
+        };
+
+        const feedbacks = ["Du bist eine Null!", "Glückstreffer!", "Schnarchnase!", "Bruchpilot!", "Blindgänger!", "Tourist!", "Solider Typ!", "Stabil!", "Rakete!", "Superhirn!", "Genie!"];
+        let pool = [], qIdx = 0, score = 0;
+
+        function goHome() { 
+            document.querySelectorAll('body > div').forEach(d => d.classList.add('hidden'));
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+        function showNomen() {
+            const grid = document.getElementById('nomen-grid'); grid.innerHTML = '';
+            Object.keys(db.nomen).forEach(cat => {
+                const b = document.createElement('button'); b.className = 'btn'; 
+                b.innerText = cat.toUpperCase(); b.onclick = () => startQuiz('nomen', cat);
+                grid.appendChild(b);
+            });
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('nomen-screen').classList.remove('hidden');
+        }
+
+        function startQuiz(type, cat) {
+            let data = cat ? db.nomen[cat] : db[type];
+            if (!data) return;
+            pool = [...data].sort(() => 0.5 - Math.random()).slice(0, 10);
+            qIdx = 0; score = 0;
+            document.querySelectorAll('body > div').forEach(d => d.classList.add('hidden'));
+            document.getElementById('quiz-card').classList.remove('hidden');
+            renderQ();
+        }
+
+        function renderQ() {
+            if(qIdx >= 10 || qIdx >= pool.length) return finish();
+            const item = pool[qIdx];
+            document.getElementById('prog').innerText = `${qIdx+1} / 10`;
+            document.getElementById('word-display').innerText = item.d;
+            const opt = document.getElementById('options'); opt.innerHTML = '';
+            [item.k, ...item.a].sort(() => 0.5 - Math.random()).forEach(o => {
+                const b = document.createElement('button'); b.className = 'btn answer-btn';
+                b.innerText = o; b.onclick = () => check(b, o, item.k);
+                opt.appendChild(b);
+            });
+        }
+
+        function check(btn, sel, cor) {
+            const all = document.querySelectorAll('.answer-btn');
+            all.forEach(b => b.disabled = true);
+            if(sel === cor) { btn.classList.add('correct'); score++; setTimeout(() => { qIdx++; renderQ(); }, 1000); }
+            else { btn.classList.add('wrong'); all.forEach(b => { if(b.innerText === cor) b.classList.add('correct'); }); setTimeout(() => { qIdx++; renderQ(); }, 2000); }
+        }
+
+        function finish() {
+            document.getElementById('quiz-card').classList.add('hidden');
+            const s = document.getElementById('stats-screen'); s.classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score} / 10`;
+            document.getElementById('feedback').innerText = feedbacks[score];
+        }
+        window.onload = goHome;
+    </script>
+</body>
+</html>
