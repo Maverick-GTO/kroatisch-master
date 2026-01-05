@@ -1,4 +1,4 @@
-const cacheName = 'kroatisch-v4';
+const cacheName = 'kroatisch-v5';
 const assets = ['./', './index.html', './manifest.json', './icon.png'];
 
 self.addEventListener('install', e => {
