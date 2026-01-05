@@ -1,0 +1,16 @@
+{
+  "name": "Kroatisch Master",
+  "short_name": "Kroatisch",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#040426",
+  "theme_color": "#040426",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
